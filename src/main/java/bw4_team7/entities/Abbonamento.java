@@ -7,6 +7,10 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "abbonamenti")
+@NamedQuery(
+        name = "subscriptionCheck",
+        query = "SELECT a FROM Abbonamento a JOIN Servizio s ON a.id = s.id " +
+            "WHERE a.dataScadenza > CURRENT_DATE AND s.utente.numeroTessera = :numeroTessera")
 public class Abbonamento extends Servizio {
     @Enumerated(EnumType.STRING)
     private TipoAbbonamento tipo;
