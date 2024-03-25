@@ -17,7 +17,7 @@ public class UtenteDAO {
         tr.begin();
         em.persist(user);
         tr.commit();
-        System.out.println("Utente " + user.getNome() + " " + user.getCognome() + " id " + user.getNumeroTessera() + " salvato con successo!");
+        System.out.println("Utente " + user.getNome() + " " + user.getCognome() + " tessera n° " + user.getNumeroTessera() + " salvato con successo!");
     }
 
     public Utente findUserById(long id) {

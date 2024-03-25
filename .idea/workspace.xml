@@ -27,6 +27,20 @@
       </list>
     </option>
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Rachele-Trimboli"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="fdc3d535-f9ff-4d2a-8283-175da755115b" />
+        <option name="url" value="https://github.com/kaem0n/epicode-BW4-Team7.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="ProjectId" id="2eB11OxHL5SW9HssOz4dmsfhKWn" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -43,14 +57,16 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "Davide-branch",
+    "git-widget-placeholder": "Rachele",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/anton/Desktop/EPICODE/Back End/Unità 1/Week 4/untitled/src/main/java/bw4_team7",
+    "last_opened_file_path": "C:/Users/anton/Desktop/EPICODE/Back End/Unità 1/Week 4/untitled",
     "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\anton\Desktop\EPICODE\Back End\Unità 1\Week 4\untitled" />
       <recent name="C:\Users\anton\Desktop\EPICODE\Back End\Unità 1\Week 4\untitled\src\main\java\bw4_team7" />
       <recent name="C:\Users\anton\Desktop\EPICODE\Back End\Unità 1\Week 4\untitled\src\main" />
     </key>
@@ -95,12 +111,29 @@
       <option name="project" value="LOCAL" />
       <updated>1711378234528</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="tested methods">
+      <option name="closed" value="true" />
+      <created>1711378851983</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1711378851983</updated>
+    </task>
+    <task id="LOCAL-00005" summary="populated DAOs">
+      <option name="closed" value="true" />
+      <created>1711385517940</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1711385517940</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="project start" />
     <MESSAGE value="fixed exception message" />
+    <MESSAGE value="tested methods" />
     <MESSAGE value="populated DAOs" />
     <option name="LAST_COMMIT_MESSAGE" value="populated DAOs" />
   </component>
