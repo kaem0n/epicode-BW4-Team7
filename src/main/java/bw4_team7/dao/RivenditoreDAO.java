@@ -1,10 +1,16 @@
 package bw4_team7.dao;
 
+import bw4_team7.entities.Abbonamento;
+import bw4_team7.entities.Biglietto;
 import bw4_team7.entities.DistributoreAutomatico;
 import bw4_team7.entities.RivenditoreAutorizzato;
 import bw4_team7.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
+
+import java.time.LocalDate;
+import java.util.List;
 
 public class RivenditoreDAO {
     private final EntityManager em;
@@ -32,5 +38,28 @@ public class RivenditoreDAO {
         em.remove(vehicle);
         tr.commit();
         System.out.println("RivenditoreAutorizzato cancellato con successo dal database.");
+    }
+
+    public void creaTicket(Biglietto ticket) {
+        EntityTransaction tr = em.getTransaction();
+        tr.begin();
+        em.persist(ticket);
+        tr.commit();
+        System.out.println(ticket);
+
+    }
+
+    public void creaSubscription(Abbonamento sub) {
+        EntityTransaction tr = em.getTransaction();
+        tr.begin();
+        em.persist(sub);
+        tr.commit();
+        System.out.println(sub);
+    }
+
+    public List<Biglietto> ticketsForDate(LocalDate data){
+        TypedQuery<Biglietto> query = em.createQuery("SELECT b FROM Biglietto b WHERE b.dataEmissione = :data",Biglietto.class);
+        query.setParameter("data",data);
+        return query.getResultList();
     }
 }

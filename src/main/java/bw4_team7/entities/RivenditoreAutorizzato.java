@@ -2,6 +2,7 @@ package bw4_team7.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -33,6 +34,7 @@ public class RivenditoreAutorizzato {
     public List<Servizio> getServizi() {
         return servizi;
     }
+
 
     @Override
     public String toString() {
