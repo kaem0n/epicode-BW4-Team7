@@ -4,6 +4,9 @@ import bw4_team7.entities.*;
 import bw4_team7.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
+
+import java.time.LocalDate;
 
 public class ServizioDAO {
     private final EntityManager em;
@@ -17,6 +20,13 @@ public class ServizioDAO {
         tr.commit();
         System.out.println("Biglietto id " + ticket.getId() + " salvato con successo!");
     }
+
+    public Biglietto findTicketById(long id) {
+        Biglietto ticket = em.find(Biglietto.class, id);
+        if (ticket == null) throw new NotFoundException(id);
+        else return ticket;
+    }
+
 
     public void saveSubscription(Abbonamento sub) {
         EntityTransaction tr = em.getTransaction();
@@ -39,5 +49,12 @@ public class ServizioDAO {
         em.remove(vehicle);
         tr.commit();
         System.out.println("Biglietto/abbonamento cancellato con successo dal database.");
+    }
+
+    public void ricercaBigliettiObliteratiPerData(LocalDate dataInizio, LocalDate dataFine){
+        TypedQuery<Biglietto> query = em.createNamedQuery("ticketByDate", Biglietto.class);
+        query.setParameter("dataInizio", dataInizio);
+        query.setParameter("dataFine", dataFine);
+        query.getResultList().forEach(System.out::println);
     }
 }

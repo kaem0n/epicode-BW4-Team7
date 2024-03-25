@@ -46,6 +46,25 @@ public class Application {
 //        td.save(new Tratta("Roma Tiburtina", "Aeroporto di Fiumicino", 100));
 //        td.save(new Tratta("Colosseo", "Piazza del Popolo", 20));
 
-//        sd2.saveMainentance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(56)));
+//        sd1.saveTicket(new Biglietto(LocalDate.of(2024,1,2), ud.findUserById(1), rd.findSellerById(1)));
+
+//        sd2.saveMainentance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(4)));
+
+//        md.saveBus(new Autobus());md.saveBus(new Autobus());md.saveBus(new Autobus());md.saveBus(new Autobus());
+//        md.saveTram(new Tram());md.saveTram(new Tram());md.saveTram(new Tram());md.saveTram(new Tram());
+
+        // SET DATA FINE MANUTENZIONE
+//        sd2.definitedFinishMaintenance(1, LocalDate.of(2024, 4,2));
+
+        // VALIDAZIONE BIGLIETTO
+//        md.validateTicket(sd1.findTicketById(2), md.findVehicleById(59), LocalDate.now());
+
+        // BIGLIETTI OBLITERATI PER MEZZO
+//        md.totaleBigliettiObliteratiSuUnMezzo(md.findVehicleById(59));
+        // BIGLIETTI OBLITERATI PER PERIODO
+//        sd1.ricercaBigliettiObliteratiPerData(LocalDate.of(2020,1,1), LocalDate.now());
+
+        // PERIODI DI SERVIZI E MANUTENZIONE IN BASE ALLA DATA
+//        md.ricercaPeriodiDiStato(LocalDate.of(2020,2,2), md.findVehicleById(4));
     }
 }
