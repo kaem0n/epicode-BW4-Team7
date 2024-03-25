@@ -46,6 +46,14 @@ public class Application {
 //        td.save(new Tratta("Roma Tiburtina", "Aeroporto di Fiumicino", 100));
 //        td.save(new Tratta("Colosseo", "Piazza del Popolo", 20));
 
+//        md.trattaAMezzo(4, 2);
+//       md.trattaAMezzo(2, 4);
+
+//        md.contaTrattePerMezzo(4,1);
+
 //        sd2.saveMainentance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(56)));
+
+
+        md.calcolaTempoPercorrenzaMedio(2);
     }
 }
