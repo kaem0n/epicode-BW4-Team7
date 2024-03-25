@@ -1,9 +1,6 @@
 package bw4_team7.exceptions;
 public class NotFoundException extends RuntimeException {
     public NotFoundException(long id) {
-        super("Error: queried ID " + id + " gave no results.");
-    }
-    public NotFoundException(String isbn) {
-        super("Error: queried ISBN " + isbn + " gave no results.");
+        super("Errore: l'ID " + id + " non ha dato alcun risultato.");
     }
 }
