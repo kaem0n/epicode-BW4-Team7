@@ -1,2 +1,4 @@
-package bw4_team7.dao;public class RivenditoreDAO {
+package bw4_team7.dao;
+
+public class RivenditoreDAO {
 }

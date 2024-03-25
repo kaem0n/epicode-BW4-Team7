@@ -4,27 +4,79 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23ba02eb-9ed5-4300-adc4-04416445beca" name="Changes" comment="" />
+    <list default="true" id="23ba02eb-9ed5-4300-adc4-04416445beca" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Abbonamento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Autobus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Biglietto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/DistributoreAutomatico.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/InServizio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Manutenzione.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Mezzo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/RivenditoreAutorizzato.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Servizio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Stato.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Tram.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Tratta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Utente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/enums/StatoDistributore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/enums/StatoMezzo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/enums/TipoAbbonamento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/bw4-team7/ApplicationTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectId" id="2eB11OxHL5SW9HssOz4dmsfhKWn" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Application.executor": "Run",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true"
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/anton/Desktop/EPICODE/Back End/Unità 1/Week 4/untitled/src/main"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\anton\Desktop\EPICODE\Back End\Unità 1\Week 4\untitled\src\main" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-temurin-17.0.10-3183f394aec4-87f3d08d" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

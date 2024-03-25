@@ -1,2 +1,4 @@
-package bw4_team7.dao;public class ServizioDAO {
+package bw4_team7.dao;
+
+public class ServizioDAO {
 }

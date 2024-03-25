@@ -1,4 +1,4 @@
-package kaem0n.exceptions;
+package bw4_team7.exceptions;
 public class NotFoundException extends RuntimeException {
     public NotFoundException(long id) {
         super("Error: queried ID " + id + " gave no results.");
