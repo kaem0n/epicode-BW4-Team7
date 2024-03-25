@@ -17,7 +17,7 @@ public class StatoDAO {
         EntityTransaction tr = em.getTransaction();
         tr.begin();
         em.persist(maintenance);
-        if (maintenance.getDataFine() != null) maintenance.getMezzo().setStato(StatoMezzo.IN_MANUTENZIONE);
+        if (maintenance.getDataFine() == null) maintenance.getMezzo().setStato(StatoMezzo.IN_MANUTENZIONE);
         tr.commit();
         System.out.println("Manutenzione id " + maintenance.getId() + " salvata con successo!");
     }

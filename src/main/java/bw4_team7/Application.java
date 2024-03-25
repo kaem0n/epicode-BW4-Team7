@@ -45,5 +45,7 @@ public class Application {
 //        td.save(new Tratta("Roma Termini", "Aeroporto di Fiumicino", 90));
 //        td.save(new Tratta("Roma Tiburtina", "Aeroporto di Fiumicino", 100));
 //        td.save(new Tratta("Colosseo", "Piazza del Popolo", 20));
+
+//        sd2.saveMainentance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(56)));
     }
 }
