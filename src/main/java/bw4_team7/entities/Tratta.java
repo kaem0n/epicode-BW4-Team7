@@ -17,19 +17,16 @@ public class Tratta {
     private String capolinea;
     @Column(name = "tempo_percorrenza")
     private int tempoPercorrenza;
-    @Column(name = "data_percorrenza")
-    private LocalDate dataPercorrenza;
     @ManyToMany(mappedBy = "tratte")
     private List<Mezzo> mezzi;
 
     public Tratta() {}
 
-    public Tratta(String partenza, String capolinea, int tempoPercorrenza, LocalDate dataPercorrenza) {
+    public Tratta(String partenza, String capolinea, int tempoPercorrenza) {
         this.partenza = partenza;
         this.capolinea = capolinea;
         this.nome = this.partenza + " - " + this.capolinea;
         this.tempoPercorrenza = tempoPercorrenza;
-        this.dataPercorrenza = dataPercorrenza;
     }
 
     public long getId() {
@@ -52,10 +49,6 @@ public class Tratta {
         return tempoPercorrenza;
     }
 
-    public LocalDate getDataPercorrenza() {
-        return dataPercorrenza;
-    }
-
     @Override
     public String toString() {
         return "Tratta{" +
@@ -64,7 +57,6 @@ public class Tratta {
                 ", partenza='" + partenza + '\'' +
                 ", capolinea='" + capolinea + '\'' +
                 ", tempoPercorrenza=" + tempoPercorrenza +
-                ", dataPercorrenza=" + dataPercorrenza +
                 '}';
     }
 }

@@ -1,11 +1,13 @@
 package bw4_team7.entities;
 
+import bw4_team7.enums.StatoMezzo;
 import jakarta.persistence.Entity;
 
 @Entity
 public class Autobus extends Mezzo {
     public Autobus() {
         super.capienza = 100;
+        super.stato = StatoMezzo.IN_SERVIZIO;
     }
 
     @Override

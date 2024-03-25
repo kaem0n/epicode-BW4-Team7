@@ -30,10 +30,6 @@ public abstract class Mezzo {
 
     public Mezzo() {}
 
-    public Mezzo(int capienza) {
-        this.capienza = capienza;
-    }
-
     public long getId() {
         return id;
     }
