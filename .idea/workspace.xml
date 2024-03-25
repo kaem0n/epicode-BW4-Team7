@@ -5,18 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23ba02eb-9ed5-4300-adc4-04416445beca" name="Changes" comment="populated DAOs">
-      <change afterPath="$PROJECT_DIR$/ERD.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/MezzoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/MezzoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/RivenditoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/RivenditoreDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/ServizioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/ServizioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/StatoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/StatoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/UtenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/UtenteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Abbonamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Abbonamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Biglietto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Biglietto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Manutenzione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Manutenzione.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/RivenditoreAutorizzato.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/RivenditoreAutorizzato.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Mezzo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Mezzo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Tratta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Tratta.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +25,26 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Perri-Alessandro"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="55310d13-6746-412c-8d8a-42348b4ecd83" />
+        <option name="url" value="https://github.com/kaem0n/epicode-BW4-Team7.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
   <component name="ProjectId" id="2eB11OxHL5SW9HssOz4dmsfhKWn" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -46,16 +60,15 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Merging Alessandro__Start",
+    "git-widget-placeholder": "Alessandro__Start",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/anton/Desktop/EPICODE/Back End/Unità 1/Week 4/untitled",
+    "last_opened_file_path": "C:/Users/anton/Desktop/EPICODE/Back End/Unità 1/Week 4/untitled/src/main/java/bw4_team7",
     "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\anton\Desktop\EPICODE\Back End\Unità 1\Week 4\untitled" />
       <recent name="C:\Users\anton\Desktop\EPICODE\Back End\Unità 1\Week 4\untitled\src\main\java\bw4_team7" />
       <recent name="C:\Users\anton\Desktop\EPICODE\Back End\Unità 1\Week 4\untitled\src\main" />
     </key>
@@ -100,29 +113,12 @@
       <option name="project" value="LOCAL" />
       <updated>1711378234528</updated>
     </task>
-    <task id="LOCAL-00004" summary="tested methods">
-      <option name="closed" value="true" />
-      <created>1711378851983</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1711378851983</updated>
-    </task>
-    <task id="LOCAL-00005" summary="populated DAOs">
-      <option name="closed" value="true" />
-      <created>1711385517940</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1711385517940</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="project start" />
     <MESSAGE value="fixed exception message" />
-    <MESSAGE value="tested methods" />
     <MESSAGE value="populated DAOs" />
     <option name="LAST_COMMIT_MESSAGE" value="populated DAOs" />
   </component>

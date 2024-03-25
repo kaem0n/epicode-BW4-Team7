@@ -6,7 +6,6 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "biglietti")
-@NamedQuery(name = "ticketByDate", query = "SELECT b FROM Biglietto b WHERE b.dataVidimazione BETWEEN :dataInizio AND :dataFine ")
 public class Biglietto extends Servizio {
     private boolean valido;
     @Column(name = "data_vidimazione")

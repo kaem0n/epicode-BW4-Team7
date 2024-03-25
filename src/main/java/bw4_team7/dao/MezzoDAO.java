@@ -3,13 +3,10 @@ package bw4_team7.dao;
 import bw4_team7.entities.Autobus;
 import bw4_team7.entities.Mezzo;
 import bw4_team7.entities.Tram;
+import bw4_team7.entities.Tratta;
 import bw4_team7.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.TypedQuery;
-
-import java.time.LocalDate;
-import java.util.List;
 
 public class MezzoDAO {
     private final EntityManager em;
@@ -47,5 +44,45 @@ public class MezzoDAO {
         em.remove(vehicle);
         tr.commit();
         System.out.println("Mezzo cancellato con successo dal database.");
+    }
+
+    public void trattaAMezzo(long mezzoId, long trattaId) {
+        EntityTransaction tr = em.getTransaction();
+        tr.begin();
+
+        Mezzo mezzo = em.find(Mezzo.class, mezzoId);
+        Tratta tratta = em.find(Tratta.class, trattaId);
+
+        mezzo.getTratte().add(tratta);
+        tratta.getMezzi().add(mezzo);
+
+        em.persist(mezzo);
+        em.persist(tratta);
+
+        em.getTransaction().commit();
+        System.out.println("Tratta collegata a mezzo (junction-table). idMezzo:" + mezzoId + ", idTratta:" + trattaId);
+    }
+
+    public long contaTrattePerMezzo(long mezzoId, long trattaId) {
+        Long conteggio = em.createNamedQuery("Mezzo.contaTrattePerMezzo", Long.class)
+                .setParameter("mezzoId", mezzoId)
+                .setParameter("trattaId", trattaId)
+                .getSingleResult();
+        System.out.println("Il mezzo con ID " + mezzoId + " ha percorso la tratta con ID " + trattaId + " per " + conteggio + " volte.");
+        return conteggio;
+    }
+
+    public double calcolaTempoPercorrenzaMedio(long mezzoId) {
+        Double tempoMedio = em.createNamedQuery("Mezzo.calcolaTempoPercorrenzaMedio", Double.class)
+                .setParameter("mezzoId", mezzoId)
+                .getSingleResult();
+
+        if (tempoMedio == null) {
+            System.out.println("Nessuna tratta trovata per il mezzo con ID: " + mezzoId);
+            return 0.0; // Restituisco un valore di default.
+        } else {
+            System.out.println("Il tempo medio di percorrenza del mezzo con id " + mezzoId + " è " + tempoMedio);
+            return tempoMedio;
+        }
     }
 }
