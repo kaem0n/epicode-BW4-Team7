@@ -38,15 +38,15 @@ public class Application {
 //      rd.saveSeller(new DistributoreAutomatico("Distributore 3", StatoDistributore.ATTIVO));
 
         //CREAZIONE RIVENDITORE
-        RivenditoreAutorizzato riv1 = new RivenditoreAutorizzato("Rivenditore stazione");
-        rd.saveSeller(riv1);
-
-        //CREAZIONE UTENTE
-        Utente utente1=new Utente("Maria","Rossi",LocalDate.now());
-        ud.save(utente1);
+//        RivenditoreAutorizzato riv1 = new RivenditoreAutorizzato("Rivenditore stazione");
+//        rd.saveSeller(riv1);
+//
+//        //CREAZIONE UTENTE
+//        Utente utente1=new Utente("Maria","Rossi",LocalDate.now());
+//        ud.save(utente1);
 
         //CREAZIONE BIGLIETTO
-              Biglietto biglietto = new Biglietto(LocalDate.now(),utente1,riv1);
+//              Biglietto biglietto = new Biglietto(LocalDate.now(),utente1,riv1);
 
         //IL RIVENDITORE STAMPA E RESTITUISCE IL BIGLIETTO
         /*        rd.creaTicket(biglietto);*/
@@ -218,13 +218,13 @@ public class Application {
                 case 4:
                     System.out.println("Inserisci l'id del ticket da cercare:");
                     ticketId = scanner.nextLong();
-                    Biglietto biglietto = em.find(Biglietto.class, ticketId);
-                    if (biglietto != null) {
-                        System.out.println("Biglietto trovato: " + biglietto.toString());
+                    Biglietto biglietto2 = em.find(Biglietto.class, ticketId);
+                    if (biglietto2 != null) {
+                        System.out.println("Biglietto trovato: " + biglietto2.toString());
                         System.out.println("Inserisci l'id del veicolo da assegnare al ticket: ");
                         mezzoPerTicketId = scanner.nextLong();
                         Mezzo mezzo = em.find(Mezzo.class, mezzoPerTicketId);
-                        md.validateTicket(biglietto, mezzo, LocalDate.now());
+                        md.validateTicket(biglietto2, mezzo, LocalDate.now());
                     } else {
                         System.out.println("Nessun biglietto trovato con ID: " + ticketId);
                     }
