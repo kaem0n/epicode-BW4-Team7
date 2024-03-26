@@ -49,6 +49,10 @@ public class Tratta {
         return tempoPercorrenza;
     }
 
+    public List<Mezzo> getMezzi() {
+        return mezzi;
+    }
+
     @Override
     public String toString() {
         return "Tratta{" +

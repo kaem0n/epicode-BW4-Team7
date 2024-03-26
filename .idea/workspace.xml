@@ -27,16 +27,26 @@
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
     &quot;assignee&quot;: &quot;Rachele-Trimboli&quot;
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Perri-Alessandro&quot;
   }
 }</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="fdc3d535-f9ff-4d2a-8283-175da755115b" />
+        <option name="accountId" value="55310d13-6746-412c-8d8a-42348b4ecd83" />
         <option name="url" value="https://github.com/kaem0n/epicode-BW4-Team7.git" />
       </UrlAndAccount>
     </option>
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 0
 }]]></component>
@@ -60,11 +70,22 @@
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/anton/Desktop/EPICODE/Back End/Unità 1/Week 4/untitled&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Application.executor": "Run",
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/anton/Desktop/EPICODE/Back End/Unità 1/Week 4/untitled/src/main/java/bw4_team7",
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\anton\Desktop\EPICODE\Back End\Unità 1\Week 4\untitled" />
       <recent name="C:\Users\anton\Desktop\EPICODE\Back End\Unità 1\Week 4\untitled\src\main\java\bw4_team7" />
       <recent name="C:\Users\anton\Desktop\EPICODE\Back End\Unità 1\Week 4\untitled\src\main" />
     </key>
@@ -109,29 +130,12 @@
       <option name="project" value="LOCAL" />
       <updated>1711378234528</updated>
     </task>
-    <task id="LOCAL-00004" summary="tested methods">
-      <option name="closed" value="true" />
-      <created>1711378851983</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1711378851983</updated>
-    </task>
-    <task id="LOCAL-00005" summary="populated DAOs">
-      <option name="closed" value="true" />
-      <created>1711385517940</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1711385517940</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="project start" />
     <MESSAGE value="fixed exception message" />
-    <MESSAGE value="tested methods" />
     <MESSAGE value="populated DAOs" />
     <option name="LAST_COMMIT_MESSAGE" value="populated DAOs" />
   </component>

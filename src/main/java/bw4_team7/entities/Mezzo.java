@@ -7,6 +7,11 @@ import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@NamedQuery(
+        name = "Mezzo.contaTrattePerMezzo",
+        query = "SELECT COUNT(mt) FROM Mezzo m JOIN m.tratte mt WHERE m.id = :mezzoId AND mt.id = :trattaId")
+@NamedQuery(name = "Mezzo.calcolaTempoPercorrenzaMedio",
+        query = "SELECT AVG(tratta.tempoPercorrenza) FROM Mezzo mezzo JOIN mezzo.tratte tratta WHERE mezzo.id = :mezzoId")
 public abstract class Mezzo {
     @Id
     @GeneratedValue
