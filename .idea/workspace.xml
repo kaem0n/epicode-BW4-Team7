@@ -56,7 +56,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Application.executor": "Run",
-    "git-widget-placeholder": "master"
+    "git-widget-placeholder": "Merging Rachele"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -105,6 +105,7 @@
     <MESSAGE value="project start" />
     <MESSAGE value="fixed exception message" />
     <MESSAGE value="populated DAOs" />
-    <option name="LAST_COMMIT_MESSAGE" value="populated DAOs" />
+    <MESSAGE value="created and tested subscription check method" />
+    <option name="LAST_COMMIT_MESSAGE" value="created and tested subscription check method" />
   </component>
 </project>
