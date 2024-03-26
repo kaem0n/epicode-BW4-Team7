@@ -91,6 +91,7 @@ public class Application {
             System.out.println("1) Per contare le tratte per ogni mezzo; ");
             System.out.println("2) Per calcolare il tempo di percorrenza medio; ");
             System.out.println("3) Per assegnare una tratta ad un mezzo; ");
+            System.out.println("4) Per vidimare i biglietti ed assegnarli al mezzo; ");
             System.out.println("0) Per uscire dal programma; ");
 
         // VALIDAZIONE BIGLIETTO
@@ -137,6 +138,9 @@ public class Application {
                     trattaId = scanner.nextLong();
                     md.trattaAMezzo(mezzoId, trattaId);
                     break;
+
+                case 4:
+                    System.out.println();
 
                 default:
                     System.out.println("Scelta non valida. Riprova.");
