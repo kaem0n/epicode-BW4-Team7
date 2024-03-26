@@ -3,6 +3,8 @@ package bw4_team7;
 import bw4_team7.dao.*;
 import bw4_team7.entities.Biglietto;
 import bw4_team7.entities.Mezzo;
+import bw4_team7.entities.RivenditoreAutorizzato;
+import bw4_team7.entities.Utente;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -38,15 +40,15 @@ public class Application {
 //      rd.saveSeller(new DistributoreAutomatico("Distributore 3", StatoDistributore.ATTIVO));
 
         //CREAZIONE RIVENDITORE
-//        RivenditoreAutorizzato riv1 = new RivenditoreAutorizzato("Rivenditore stazione");
-//        rd.saveSeller(riv1);
+      RivenditoreAutorizzato riv1 = new RivenditoreAutorizzato("Rivenditore stazione");
+        rd.saveSeller(riv1);
 //
 //        //CREAZIONE UTENTE
-//        Utente utente1=new Utente("Maria","Rossi",LocalDate.now());
-//        ud.save(utente1);
+//       Utente utente1=new Utente("Maria","Rossi",LocalDate.now());
+//     ud.save(utente1);
 
         //CREAZIONE BIGLIETTO
-//              Biglietto biglietto = new Biglietto(LocalDate.now(),utente1,riv1);
+//           Biglietto biglietto = new Biglietto(LocalDate.now(),utente1,riv1);
 
         //IL RIVENDITORE STAMPA E RESTITUISCE IL BIGLIETTO
         /*        rd.creaTicket(biglietto);*/
@@ -115,6 +117,26 @@ public class Application {
 
 //        md.calcolaTempoPercorrenzaMedio(2);
 
+        //RICERCA DEI SERVIZI ASSOCIATI AL NUMERO DI TESSERA
+//        ud.trovaServiziPerNumeroTessera(2);
+
+        // RICERCA UTENTE PER NUMERO TESSERA
+//        ud.trovaUtentePerNumeroTessera(3);
+
+//        sd2.saveMainentance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(56)));
+
+//        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(1), rd.findSellerById(2), TipoAbbonamento.SETTIMANALE));
+//        sd1.saveSubscription(new Abbonamento(LocalDate.parse("2024-03-04"), ud.findUserById(3), rd.findSellerById(4), TipoAbbonamento.SETTIMANALE));
+//        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(2), rd.findSellerById(3), TipoAbbonamento.MENSILE));
+
+//        sd1.checkSubscription(4);
+
+
+//        System.out.println(rd.ticketsForDate(LocalDate.now()));
+
+
+//        md.calcolaTempoPercorrenzaMedio(2);
+
         int scelta = 0;
         long mezzoId, trattaId, ticketId, mezzoPerTicketId;
         Scanner scanner = new Scanner(System.in);
@@ -130,6 +152,8 @@ public class Application {
             System.out.println("6) Per cercare i biglietti emessi in base alla data;");
             System.out.println("7) Per cercare i biglietti obliterati su uno specifico mezzo;");
             System.out.println("8) Per verificare la validità di un abbonamento in base ad utente;");
+            System.out.println("9) Per creare un biglietto;");
+            System.out.println("10) Per contare i biglietti venduti da un determinato rivenditore;");
             System.out.println("0) Per uscire dal programma; ");
 
 
@@ -152,60 +176,6 @@ public class Application {
                     md.contaTrattePerMezzo(mezzoId, trattaId);
                     break;
 
-//        int scelta = 0;
-//        long mezzoId, trattaId;
-//        Scanner scanner = new Scanner(System.in);
-//
-//        do{
-//
-//            System.out.println("---------------------- BENVENUTO NEL GESTIONALE DELLA NOSTRA AZIENDA DI TRASPORTO --------------------------");
-//
-//            System.out.println("1) Per contare le tratte per ogni mezzo; ");
-//            System.out.println("2) Per calcolare il tempo di percorrenza medio; ");
-//            System.out.println("3) Per assegnare una tratta ad un mezzo; ");
-//            System.out.println("0) Per uscire dal programma; ");
-//
-//
-//
-//            scelta = scanner.nextInt();
-//
-//            switch (scelta){
-//
-//                case 0:
-//                    System.out.println("Uscita dal programma...");
-//                    System.out.println("Arrivederci e grazie!");
-//                    scanner.close();
-//                    return;
-//
-//                case 1:
-//                    System.out.println("Inserisci l'ID del mezzo:");
-//                    mezzoId = scanner.nextLong();
-//                    System.out.println("Inserisci l'ID della tratta:");
-//                    trattaId = scanner.nextLong();
-//                    md.contaTrattePerMezzo(mezzoId, trattaId);
-//                    break;
-//
-//                case 2:
-//                    md.calcolaTempoPercorrenzaMedio(3);
-//                    System.out.println("Inserisci l'ID del mezzo per calcolare il tempo medio di percorrenza:");
-//                    mezzoId = scanner.nextLong();
-//                    md.calcolaTempoPercorrenzaMedio(mezzoId);
-//                    break;
-//
-//                case 3:
-//                    System.out.println("Inserisci l'ID del mezzo a cui assegnare una tratta:");
-//                    mezzoId = scanner.nextLong();
-//                    System.out.println("Inserisci l'ID della tratta da assegnare al mezzo:");
-//                    trattaId = scanner.nextLong();
-//                    md.trattaAMezzo(mezzoId, trattaId);
-//                    break;
-//
-//                default:
-//                    System.out.println("Scelta non valida. Riprova.");
-//                    break;
-//            }
-//
-//        } while (true);
 
                 case 3:
                     System.out.println("Inserisci l'ID del mezzo a cui assegnare una tratta:");
@@ -278,25 +248,25 @@ public class Application {
                     long cardNumber = Long.parseLong(scanner.nextLine());
                     sd1.checkSubscription(cardNumber);
                     break;
-        //RICERCA DEI SERVIZI ASSOCIATI AL NUMERO DI TESSERA
-//        ud.trovaServiziPerNumeroTessera(2);
 
-        // RICERCA UTENTE PER NUMERO TESSERA
-//        ud.trovaUtentePerNumeroTessera(3);
+                case 9:
+                    System.out.println("Inserisci la data per creare il biglietto:");
+                    LocalDate emissione = LocalDate.parse(scanner.nextLine());
+                    System.out.println("Inserisci il nome dell'utente:");
+                    String nome = scanner.nextLine();
+                    System.out.println("Inserisci il cognome:");
+                    String cognome = scanner.nextLine();
+                    Utente utente1=new Utente(nome,cognome,emissione);
+     ud.save(utente1);
+                    Biglietto bigliettoNuovo = new Biglietto(emissione,utente1,riv1);
+                    rd.creaTicket(bigliettoNuovo);
+                    break;
 
-//        sd2.saveMainentance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(56)));
-
-//        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(1), rd.findSellerById(2), TipoAbbonamento.SETTIMANALE));
-//        sd1.saveSubscription(new Abbonamento(LocalDate.parse("2024-03-04"), ud.findUserById(3), rd.findSellerById(4), TipoAbbonamento.SETTIMANALE));
-//        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(2), rd.findSellerById(3), TipoAbbonamento.MENSILE));
-
-//        sd1.checkSubscription(4);
-
-
-//        System.out.println(rd.ticketsForDate(LocalDate.now()));
-
-
-//        md.calcolaTempoPercorrenzaMedio(2);
+                case 10:
+                    System.out.println("Inserisci l'id del rivenditore:");
+                    long rivenditoreId = Long.parseLong(scanner.nextLine());
+                    System.out.println("Questo Rivenditore ha venduto " + rd.serviziForRivenditore(rivenditoreId).size() + " biglietto/i");
+break;
 
                 default:
                     System.out.println("Scelta non valida. Riprova.");
