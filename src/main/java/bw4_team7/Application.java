@@ -38,15 +38,15 @@ public class Application {
 //      rd.saveSeller(new DistributoreAutomatico("Distributore 3", StatoDistributore.ATTIVO));
 
         //CREAZIONE RIVENDITORE
-/*        RivenditoreAutorizzato riv1 = new RivenditoreAutorizzato("Rivenditore stazione");
-        rd.saveSeller(riv1);*/
+        RivenditoreAutorizzato riv1 = new RivenditoreAutorizzato("Rivenditore stazione");
+        rd.saveSeller(riv1);
 
         //CREAZIONE UTENTE
-/*        Utente utente1=new Utente("Maria","Rossi",LocalDate.now());
-        ud.save(utente1);*/
+        Utente utente1=new Utente("Maria","Rossi",LocalDate.now());
+        ud.save(utente1);
 
         //CREAZIONE BIGLIETTO
-        /*        Biglietto biglietto = new Biglietto(LocalDate.now(),utente1,riv1);*/
+              Biglietto biglietto = new Biglietto(LocalDate.now(),utente1,riv1);
 
         //IL RIVENDITORE STAMPA E RESTITUISCE IL BIGLIETTO
         /*        rd.creaTicket(biglietto);*/
@@ -56,6 +56,9 @@ public class Application {
 
         //IL RIVENDITORE STAMPA E RESTITUISCE L'ABBONAMENTO
         /*        rd.creaSubscription(abbonamento);*/
+
+        //QUANTITA' DI BIGLIETTI VENDUTI IN BASE AL RIVENDITORE
+//        System.out.println("Questo Rivenditore ha venduto " + rd.serviziForRivenditore(12).size() + " biglietto/i");
 
 //        System.out.println(rd.ticketsForDate(LocalDate.now()));
 
@@ -149,12 +152,60 @@ public class Application {
                     md.contaTrattePerMezzo(mezzoId, trattaId);
                     break;
 
-                case 2:
-                    md.calcolaTempoPercorrenzaMedio(3);
-                    System.out.println("Inserisci l'ID del mezzo per calcolare il tempo medio di percorrenza:");
-                    mezzoId = scanner.nextLong();
-                    md.calcolaTempoPercorrenzaMedio(mezzoId);
-                    break;
+//        int scelta = 0;
+//        long mezzoId, trattaId;
+//        Scanner scanner = new Scanner(System.in);
+//
+//        do{
+//
+//            System.out.println("---------------------- BENVENUTO NEL GESTIONALE DELLA NOSTRA AZIENDA DI TRASPORTO --------------------------");
+//
+//            System.out.println("1) Per contare le tratte per ogni mezzo; ");
+//            System.out.println("2) Per calcolare il tempo di percorrenza medio; ");
+//            System.out.println("3) Per assegnare una tratta ad un mezzo; ");
+//            System.out.println("0) Per uscire dal programma; ");
+//
+//
+//
+//            scelta = scanner.nextInt();
+//
+//            switch (scelta){
+//
+//                case 0:
+//                    System.out.println("Uscita dal programma...");
+//                    System.out.println("Arrivederci e grazie!");
+//                    scanner.close();
+//                    return;
+//
+//                case 1:
+//                    System.out.println("Inserisci l'ID del mezzo:");
+//                    mezzoId = scanner.nextLong();
+//                    System.out.println("Inserisci l'ID della tratta:");
+//                    trattaId = scanner.nextLong();
+//                    md.contaTrattePerMezzo(mezzoId, trattaId);
+//                    break;
+//
+//                case 2:
+//                    md.calcolaTempoPercorrenzaMedio(3);
+//                    System.out.println("Inserisci l'ID del mezzo per calcolare il tempo medio di percorrenza:");
+//                    mezzoId = scanner.nextLong();
+//                    md.calcolaTempoPercorrenzaMedio(mezzoId);
+//                    break;
+//
+//                case 3:
+//                    System.out.println("Inserisci l'ID del mezzo a cui assegnare una tratta:");
+//                    mezzoId = scanner.nextLong();
+//                    System.out.println("Inserisci l'ID della tratta da assegnare al mezzo:");
+//                    trattaId = scanner.nextLong();
+//                    md.trattaAMezzo(mezzoId, trattaId);
+//                    break;
+//
+//                default:
+//                    System.out.println("Scelta non valida. Riprova.");
+//                    break;
+//            }
+//
+//        } while (true);
 
                 case 3:
                     System.out.println("Inserisci l'ID del mezzo a cui assegnare una tratta:");
@@ -227,6 +278,25 @@ public class Application {
                     long cardNumber = Long.parseLong(scanner.nextLine());
                     sd1.checkSubscription(cardNumber);
                     break;
+        //RICERCA DEI SERVIZI ASSOCIATI AL NUMERO DI TESSERA
+//        ud.trovaServiziPerNumeroTessera(2);
+
+        // RICERCA UTENTE PER NUMERO TESSERA
+//        ud.trovaUtentePerNumeroTessera(3);
+
+//        sd2.saveMainentance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(56)));
+
+//        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(1), rd.findSellerById(2), TipoAbbonamento.SETTIMANALE));
+//        sd1.saveSubscription(new Abbonamento(LocalDate.parse("2024-03-04"), ud.findUserById(3), rd.findSellerById(4), TipoAbbonamento.SETTIMANALE));
+//        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(2), rd.findSellerById(3), TipoAbbonamento.MENSILE));
+
+//        sd1.checkSubscription(4);
+
+
+//        System.out.println(rd.ticketsForDate(LocalDate.now()));
+
+
+//        md.calcolaTempoPercorrenzaMedio(2);
 
                 default:
                     System.out.println("Scelta non valida. Riprova.");

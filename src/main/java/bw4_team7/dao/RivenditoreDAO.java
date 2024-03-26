@@ -1,9 +1,6 @@
 package bw4_team7.dao;
 
-import bw4_team7.entities.Abbonamento;
-import bw4_team7.entities.Biglietto;
-import bw4_team7.entities.DistributoreAutomatico;
-import bw4_team7.entities.RivenditoreAutorizzato;
+import bw4_team7.entities.*;
 import bw4_team7.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -58,6 +55,12 @@ public class RivenditoreDAO {
     public List<Biglietto> ticketsForDate(LocalDate data){
         TypedQuery<Biglietto> query = em.createQuery("SELECT b FROM Biglietto b WHERE b.dataEmissione = :data",Biglietto.class);
         query.setParameter("data",data);
+        return query.getResultList();
+    }
+
+    public List<Biglietto> serviziForRivenditore(long rivenditoreid){
+        TypedQuery<Biglietto> query = em.createQuery("SELECT b FROM Biglietto b WHERE b.rivenditore.id = :rivenditoreid", Biglietto.class);
+        query.setParameter("rivenditoreid", rivenditoreid);
         return query.getResultList();
     }
 }
