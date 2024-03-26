@@ -7,6 +7,7 @@ import bw4_team7.entities.Tratta;
 import bw4_team7.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
 
 public class MezzoDAO {
     private final EntityManager em;
@@ -64,24 +65,27 @@ public class MezzoDAO {
     }
 
     public long contaTrattePerMezzo(long mezzoId, long trattaId) {
-        Long conteggio = em.createNamedQuery("Mezzo.contaTrattePerMezzo", Long.class)
+        TypedQuery<Long> q = em.createNamedQuery("Mezzo.contaTrattePerMezzo", Long.class)
                 .setParameter("mezzoId", mezzoId)
-                .setParameter("trattaId", trattaId)
-                .getSingleResult();
+                .setParameter("trattaId", trattaId);
+
+        Long conteggio = q.getSingleResult();
+
         System.out.println("Il mezzo con ID " + mezzoId + " ha percorso la tratta con ID " + trattaId + " per " + conteggio + " volte.");
         return conteggio;
     }
 
     public double calcolaTempoPercorrenzaMedio(long mezzoId) {
-        Double tempoMedio = em.createNamedQuery("Mezzo.calcolaTempoPercorrenzaMedio", Double.class)
-                .setParameter("mezzoId", mezzoId)
-                .getSingleResult();
+        TypedQuery<Double> q = em.createNamedQuery("Mezzo.calcolaTempoPercorrenzaMedio", Double.class)
+                .setParameter("mezzoId", mezzoId);
+
+        Double tempoMedio = q.getSingleResult();
 
         if (tempoMedio == null) {
             System.out.println("Nessuna tratta trovata per il mezzo con ID: " + mezzoId);
             return 0.0; // Restituisco un valore di default.
         } else {
-            System.out.println("Il tempo medio di percorrenza del mezzo con id " + mezzoId + " è " + tempoMedio);
+            System.out.println("Il tempo medio di percorrenza del mezzo con id " + mezzoId + " è di " + tempoMedio + " minuti.");
             return tempoMedio;
         }
     }
