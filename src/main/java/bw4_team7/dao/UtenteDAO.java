@@ -17,17 +17,17 @@ public class UtenteDAO {
         tr.begin();
         em.persist(user);
         tr.commit();
-        System.out.println("Utente " + user.getNome() + " " + user.getCognome() + " id " + user.getNumeroTessera() + " salvato con successo!");
+        System.out.println("Utente " + user.getNome() + " " + user.getCognome() + " tessera n° " + user.getNumeroTessera() + " salvato con successo!");
     }
 
-    public Utente findVehicleById(long id) {
+    public Utente findUserById(long id) {
         Utente user = em.find(Utente.class, id);
         if (user == null) throw new NotFoundException(id);
         else return user;
     }
 
     public void delete(long id) {
-        Utente user = findVehicleById(id);
+        Utente user = findUserById(id);
         EntityTransaction tr = em.getTransaction();
         tr.begin();
         em.remove(user);
