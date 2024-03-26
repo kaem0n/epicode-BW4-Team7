@@ -1,12 +1,12 @@
 package bw4_team7.dao;
 
-import bw4_team7.entities.Autobus;
-import bw4_team7.entities.Mezzo;
-import bw4_team7.entities.Tram;
-import bw4_team7.entities.Tratta;
+import bw4_team7.entities.*;
 import bw4_team7.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
+
+import java.time.LocalDate;
 import jakarta.persistence.TypedQuery;
 
 public class MezzoDAO {
@@ -88,5 +88,36 @@ public class MezzoDAO {
             System.out.println("Il tempo medio di percorrenza del mezzo con id " + mezzoId + " è di " + tempoMedio + " minuti.");
             return tempoMedio;
         }
+    }
+
+    public void validateTicket(Biglietto tk, Mezzo m, LocalDate l){
+        if (tk.isValido() == false){
+            System.out.println("biglietto già obliterato");
+        } else {
+            EntityTransaction tr = em.getTransaction();
+            tr.begin();
+            tk.setValido(false);
+            tk.setDataVidimazione(l);
+            tk.setMezzo(m);
+            tr.commit();
+            System.out.println("Biglietto: " + tk.getId() + " è stato obliterato nel mezzo: " + m.getId());
+        }
+    }
+
+    public void totaleBigliettiObliteratiSuUnMezzo(Mezzo m) {
+        System.out.println("Biglietti obliterati del mezzo: " + m.getId() + " Sono stati obliterati TOTALE:"+ m.getBiglietti().size());
+        m.getBiglietti().forEach(System.out::println);
+    }
+
+    public void ricercaPeriodiDiStato(LocalDate data, Mezzo mezzo) {
+        TypedQuery<InServizio> periodiServizio = em.createQuery("SELECT s FROM InServizio s WHERE s.mezzo = :mezzo AND s.dataInizio >= :data", InServizio.class);
+        periodiServizio.setParameter("mezzo", mezzo);
+        periodiServizio.setParameter("data", data);
+        periodiServizio.getResultList().forEach(System.out::println);
+
+        TypedQuery<Manutenzione> periodiManutenzione = em.createQuery("SELECT m FROM Manutenzione m WHERE m.mezzo = :mezzo AND m.dataInizio >= :data", Manutenzione.class);
+        periodiManutenzione.setParameter("mezzo", mezzo);
+        periodiManutenzione.setParameter("data", data);
+        periodiManutenzione.getResultList().forEach(System.out::println);
     }
 }

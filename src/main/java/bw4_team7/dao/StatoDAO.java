@@ -8,6 +8,8 @@ import bw4_team7.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
+import java.time.LocalDate;
+
 public class StatoDAO {
     private final EntityManager em;
 
@@ -45,5 +47,14 @@ public class StatoDAO {
         em.remove(vehicle);
         tr.commit();
         System.out.println("Stato cancellato con successo dal database.");
+    }
+
+    public void definitedFinishMaintenance(long id, LocalDate finish_date){
+        Stato s = findStatusById(id);
+        EntityTransaction tr = em.getTransaction();
+        tr.begin();
+        s.setDataFine(finish_date);
+        tr.commit();
+        System.out.println("fine manutenzione definito");
     }
 }
