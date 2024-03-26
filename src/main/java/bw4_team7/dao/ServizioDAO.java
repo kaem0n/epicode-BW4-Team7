@@ -7,6 +7,8 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
 
 public class ServizioDAO {
     private final EntityManager em;

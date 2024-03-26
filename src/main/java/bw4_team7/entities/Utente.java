@@ -7,6 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "utenti")
+@NamedQuery(name = "findByNumeroTessera", query = "SELECT u FROM Utente u WHERE u.numeroTessera = :numeroTessera")
 public class Utente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
