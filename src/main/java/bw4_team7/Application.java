@@ -35,15 +35,15 @@ public class Application {
 //      rd.saveSeller(new DistributoreAutomatico("Distributore 3", StatoDistributore.ATTIVO));
 
         //CREAZIONE RIVENDITORE
-/*        RivenditoreAutorizzato riv1 = new RivenditoreAutorizzato("Rivenditore stazione");
-        rd.saveSeller(riv1);*/
+        RivenditoreAutorizzato riv1 = new RivenditoreAutorizzato("Rivenditore stazione");
+        rd.saveSeller(riv1);
 
         //CREAZIONE UTENTE
-/*        Utente utente1=new Utente("Maria","Rossi",LocalDate.now());
-        ud.save(utente1);*/
+        Utente utente1=new Utente("Maria","Rossi",LocalDate.now());
+        ud.save(utente1);
 
         //CREAZIONE BIGLIETTO
-        /*        Biglietto biglietto = new Biglietto(LocalDate.now(),utente1,riv1);*/
+              Biglietto biglietto = new Biglietto(LocalDate.now(),utente1,riv1);
 
         //IL RIVENDITORE STAMPA E RESTITUISCE IL BIGLIETTO
         /*        rd.creaTicket(biglietto);*/
@@ -53,6 +53,9 @@ public class Application {
 
         //IL RIVENDITORE STAMPA E RESTITUISCE L'ABBONAMENTO
         /*        rd.creaSubscription(abbonamento);*/
+
+        //QUANTITA' DI BIGLIETTI VENDUTI IN BASE AL RIVENDITORE
+//        System.out.println("Questo Rivenditore ha venduto " + rd.serviziForRivenditore(12).size() + " biglietto/i");
 
 //        System.out.println(rd.ticketsForDate(LocalDate.now()));
 
