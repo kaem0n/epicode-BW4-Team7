@@ -90,7 +90,7 @@ public class Application {
 
 //        sd1.saveTicket(new Biglietto(LocalDate.of(2024, 1, 2), ud.findUserById(1), rd.findSellerById(1)));
 
-//        sd2.saveMainentance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(4)));
+//        sd2.saveMaintenance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(4)));
 
 //        md.saveBus(new Autobus());md.saveBus(new Autobus());md.saveBus(new Autobus());md.saveBus(new Autobus());
 //        md.saveTram(new Tram());md.saveTram(new Tram());md.saveTram(new Tram());md.saveTram(new Tram());
@@ -114,7 +114,7 @@ public class Application {
         //                    md.totaleBigliettiObliteratiSuUnMezzo(md.findVehicleById(59));
 
 
-//        sd2.saveMainentance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(4)));
+//        sd2.saveMaintenance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(4)));
 
 //        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(1), rd.findSellerById(2), TipoAbbonamento.SETTIMANALE));
 //        sd1.saveSubscription(new Abbonamento(LocalDate.parse("2024-03-04"), ud.findUserById(3), rd.findSellerById(4), TipoAbbonamento.SETTIMANALE));
@@ -134,7 +134,7 @@ public class Application {
         // RICERCA UTENTE PER NUMERO TESSERA
 //        ud.trovaUtentePerNumeroTessera(3);
 
-//        sd2.saveMainentance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(56)));
+//        sd2.saveMaintenance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(56)));
 
 //        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(1), rd.findSellerById(2), TipoAbbonamento.SETTIMANALE));
 //        sd1.saveSubscription(new Abbonamento(LocalDate.parse("2024-03-04"), ud.findUserById(3), rd.findSellerById(4), TipoAbbonamento.SETTIMANALE));

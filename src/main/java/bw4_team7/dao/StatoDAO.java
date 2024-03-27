@@ -15,7 +15,7 @@ public class StatoDAO {
 
     public StatoDAO(EntityManager em) { this.em = em; }
 
-    public void saveMainentance(Manutenzione maintenance) {
+    public void saveMaintenance(Manutenzione maintenance) {
         if (maintenance.getMezzo().getStato() == StatoMezzo.RITIRATO) System.out.println("Errore: il mezzo " + maintenance.getMezzo().getId() + " è stato ritirato permanentemente dal servizio.");
         else {
             EntityTransaction tr = em.getTransaction();
@@ -25,6 +25,7 @@ public class StatoDAO {
             if (maintenance.getDataFine() == null) {
                 maintenance.getMezzo().setStato(StatoMezzo.IN_MANUTENZIONE);
                 maintenance.getMezzo().getPeriodiServizio().get(maintenance.getMezzo().getPeriodiServizio().size() -1).setDataFine(maintenance.getDataInizio());
+                maintenance.getMezzo().setPercorsiPerServizio(0);
             }
             tr.commit();
         }
