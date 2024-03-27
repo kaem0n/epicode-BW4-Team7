@@ -7,6 +7,7 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class MezzoDAO {
     private final EntityManager em;
@@ -121,5 +122,10 @@ public class MezzoDAO {
         periodiManutenzione.setParameter("data", data);
         periodiManutenzione.getResultList().forEach(System.out::println);
         return stato.toString();
+    }
+
+    public List<Mezzo> ogniMezzo(){
+        TypedQuery <Mezzo> q = em.createNamedQuery("ogniMezzo", Mezzo.class);
+        return q.getResultList();
     }
 }

@@ -12,6 +12,7 @@ import java.util.List;
         query = "SELECT COUNT(mt) FROM Mezzo m JOIN m.tratte mt WHERE m.id = :mezzoId AND mt.id = :trattaId")
 @NamedQuery(name = "Mezzo.calcolaTempoPercorrenzaMedio",
         query = "SELECT AVG(tratta.tempoPercorrenza) FROM Mezzo mezzo JOIN mezzo.tratte tratta WHERE mezzo.id = :mezzoId")
+@NamedQuery(name = "ogniMezzo", query = "SELECT m FROM Mezzo m")
 public abstract class Mezzo {
     @Id
     @GeneratedValue
