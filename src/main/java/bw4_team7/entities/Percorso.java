@@ -3,6 +3,7 @@ package bw4_team7.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Random;
 
 @Entity
 @Table(name = "percorsi")
@@ -30,9 +31,10 @@ public class Percorso {
 
     public Percorso(){}
 
-    public Percorso(LocalDate dataPercorrenza, int tempoPercorrenza, Mezzo mezzo, Tratta tratta) {
+    public Percorso(LocalDate dataPercorrenza, Mezzo mezzo, Tratta tratta) {
         this.dataPercorrenza = dataPercorrenza;
-        this.tempoPercorrenza = tempoPercorrenza;
+        if (tratta.getMediaPercorrenza() <= 15) this.tempoPercorrenza = new Random().nextInt(tratta.getMediaPercorrenza() - 5, tratta.getMediaPercorrenza() + 6);
+        else this.tempoPercorrenza = new Random().nextInt(tratta.getMediaPercorrenza() - 10, tratta.getMediaPercorrenza() + 11);
         this.mezzo = mezzo;
         this.tratta = tratta;
     }

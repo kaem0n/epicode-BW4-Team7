@@ -33,6 +33,24 @@ public class MezzoDAO {
         System.out.println("Tram id " + vehicle.getId() + " salvato con successo!");
     }
 
+    public void saveBusWithDate(Autobus vehicle, LocalDate date) {
+        EntityTransaction tr = em.getTransaction();
+        tr.begin();
+        em.persist(vehicle);
+        em.persist(new InServizio(date, vehicle));
+        tr.commit();
+        System.out.println("Autobus id " + vehicle.getId() + " salvato con successo!");
+    }
+
+    public void saveTramWithDate(Tram vehicle, LocalDate date) {
+        EntityTransaction tr = em.getTransaction();
+        tr.begin();
+        em.persist(vehicle);
+        em.persist(new InServizio(date, vehicle));
+        tr.commit();
+        System.out.println("Tram id " + vehicle.getId() + " salvato con successo!");
+    }
+
     public Mezzo findVehicleById(long id) {
         Mezzo vehicle = em.find(Mezzo.class, id);
         if (vehicle == null) throw new NotFoundException(id);

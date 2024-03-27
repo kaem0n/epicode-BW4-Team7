@@ -2,17 +2,19 @@ package bw4_team7;
 
 import bw4_team7.dao.*;
 import bw4_team7.entities.*;
+import bw4_team7.enums.StatoDistributore;
+import com.github.javafaker.Faker;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Application {
     public static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("bw4-team7");
+    public static final Faker faker = new Faker(Locale.ITALY);
 
     public static void main(String[] args) {
         EntityManager em = emf.createEntityManager();
@@ -24,26 +26,7 @@ public class Application {
         UtenteDAO ud = new UtenteDAO(em);
         PercorsoDAO pd = new PercorsoDAO(em);
 
-//      ud.save(new Utente("Mario", "Rossi", LocalDate.parse("2023-06-30")));
-//      ud.save(new Utente("Maria", "Bianchi", LocalDate.parse("2024-01-20")));
-//      ud.save(new Utente("Giovanni", "Neri", LocalDate.parse("2023-02-18")));
-//      ud.save(new Utente("Marco", "Bruni", LocalDate.parse("2022-04-05")));
-//      ud.save(new Utente("Eleonora", "Verdi", LocalDate.parse("2024-03-05")));
-
-//      rd.saveSeller(new RivenditoreAutorizzato("Rivenditore 1"));
-//      rd.saveSeller(new DistributoreAutomatico("Distributore 1", StatoDistributore.ATTIVO));
-//      rd.saveSeller(new RivenditoreAutorizzato("Rivenditore 2"));
-//      rd.saveSeller(new DistributoreAutomatico("Distributore 2", StatoDistributore.ATTIVO));
-//      rd.saveSeller(new RivenditoreAutorizzato("Rivenditore 3"));
-//      rd.saveSeller(new DistributoreAutomatico("Distributore 3", StatoDistributore.ATTIVO));
-
-        //CREAZIONE RIVENDITORE
-//      RivenditoreAutorizzato riv1 = new RivenditoreAutorizzato("Rivenditore stazione");
-//        rd.saveSeller(riv1);
-//
-//        //CREAZIONE UTENTE
-//       Utente utente1=new Utente("Maria","Rossi",LocalDate.now());
-//     ud.save(utente1);
+//        fillDb(em);
 
         //CREAZIONE BIGLIETTO
 //           Biglietto biglietto = new Biglietto(LocalDate.now(),utente1,riv1);
@@ -62,24 +45,13 @@ public class Application {
 
 //        System.out.println(rd.ticketsForDate(LocalDate.now()));
 
-//        md.saveBus(new Autobus());
-//        md.saveBus(new Autobus());
-//        md.saveBus(new Autobus());
-//        md.saveTram(new Tram());
-//        md.saveTram(new Tram());
-//        md.saveTram(new Tram());
-//
-//        td.save(new Tratta("Roma Termini", "Colosseo", 40));
-//        td.save(new Tratta("Roma Termini", "Piazza di Spagna", 30));
-//        td.save(new Tratta("Roma Termini", "Aeroporto di Fiumicino", 90));
-//        td.save(new Tratta("Roma Tiburtina", "Aeroporto di Fiumicino", 100));
-//        td.save(new Tratta("Colosseo", "Piazza del Popolo", 20));
-
-//        pd.save(new Percorso(LocalDate.now(), 70, md.findVehicleById(254), td.findRouteById(3)));
 //        pd.save(new Percorso(LocalDate.now(), 80, md.findVehicleById(254), td.findRouteById(4)));
-//        for (int i = 0; i < 41; i++) {
-//            pd.save(new Percorso(LocalDate.now(), 60, md.findVehicleById(302), td.findRouteById(1)));
+//        for (int i = 0; i < 20; i++) {
+//        pd.save(new Percorso(LocalDate.now(), md.findVehicleById(1), td.findRouteById(1)));
+//        pd.save(new Percorso(LocalDate.now(), md.findVehicleById(1), td.findRouteById(2)));
 //        }
+
+//        sd2.saveInService(new InServizio(LocalDate.now(), md.findVehicleById(1)));
 
 //        sd2.saveInService(new InServizio(LocalDate.now(), md.findVehicleById(302)));
 
@@ -201,9 +173,7 @@ public class Application {
                     mezzoId = scanner.nextLong();
                     System.out.println("Inserisci l'ID della tratta da assegnare al mezzo:");
                     trattaId = scanner.nextLong();
-                    System.out.println("Inserisci i minuti totali di percorrenza:");
-                    minuti = scanner.nextInt();
-                    pd.save(new Percorso(LocalDate.now(), minuti, md.findVehicleById(mezzoId), td.findRouteById(trattaId)));
+                    pd.save(new Percorso(LocalDate.now(), md.findVehicleById(mezzoId), td.findRouteById(trattaId)));
                     break;
 
                 case 4:
@@ -295,5 +265,33 @@ public class Application {
             }
 
         } while (true);
+    }
+
+    public static void fillDb(EntityManager em) {
+        MezzoDAO md = new MezzoDAO(em);
+        RivenditoreDAO rd = new RivenditoreDAO(em);
+        ServizioDAO sd1 = new ServizioDAO(em);
+        StatoDAO sd2 = new StatoDAO(em);
+        TrattaDAO td = new TrattaDAO(em);
+        UtenteDAO ud = new UtenteDAO(em);
+        PercorsoDAO pd = new PercorsoDAO(em);
+
+        for (int i = 0; i < 10; i++) {
+            md.saveBusWithDate(new Autobus(), LocalDate.of(new Random().nextInt(2017, 2024), new Random().nextInt(1, 13), new Random().nextInt(1, 29)));
+            md.saveTramWithDate(new Tram(), LocalDate.of(new Random().nextInt(2017, 2024), new Random().nextInt(1, 13), new Random().nextInt(1, 29)));
+            rd.saveSeller(new RivenditoreAutorizzato("Rivenditore" + i));
+            rd.saveSeller(new DistributoreAutomatico("Distributore" + i, StatoDistributore.ATTIVO));
+            ud.save(new Utente(faker.name().firstName(), faker.name().lastName(), LocalDate.of(new Random().nextInt(2020, 2024), new Random().nextInt(1, 13), new Random().nextInt(1, 29))));
+        }
+        td.save(new Tratta("Roma Termini", "Colosseo", 40));
+        td.save(new Tratta("Colosseo", "Roma Termini", 40));
+        td.save(new Tratta("Roma Termini", "Piazza di Spagna", 30));
+        td.save(new Tratta("Piazza di Spagna", "Roma Termini", 30));
+        td.save(new Tratta("Roma Termini", "Aeroporto di Fiumicino", 90));
+        td.save(new Tratta("Aeroporto di Fiumicino", "Roma Termini", 90));
+        td.save(new Tratta("Roma Tiburtina", "Aeroporto di Fiumicino", 100));
+        td.save(new Tratta("Aeroporto di Fiumicino", "Roma Tiburtina", 100));
+        td.save(new Tratta("Colosseo", "Piazza del Popolo", 20));
+        td.save(new Tratta("Piazza del Popolo", "Colosseo", 20));
     }
 }
