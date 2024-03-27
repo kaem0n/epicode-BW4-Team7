@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d477c4f5-836f-4ef6-a501-fd5b589d73e7" name="Changes" comment="created and tested subscription check method">
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/PercorsoDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Percorso.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/MezzoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/MezzoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/StatoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/StatoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/TrattaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/TrattaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Autobus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Autobus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Mezzo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Mezzo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Tram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Tram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Tratta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Tratta.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +66,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Application.executor": "Run",
-    "git-widget-placeholder": "Alessandro__Start"
+    "git-widget-placeholder": "percorso__relation"
   }
 }]]></component>
   <component name="RecentsManager">

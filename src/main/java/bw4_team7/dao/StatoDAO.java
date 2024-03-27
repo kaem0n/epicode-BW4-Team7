@@ -16,22 +16,36 @@ public class StatoDAO {
     public StatoDAO(EntityManager em) { this.em = em; }
 
     public void saveMainentance(Manutenzione maintenance) {
-        EntityTransaction tr = em.getTransaction();
-        tr.begin();
-        em.persist(maintenance);
-        if (maintenance.getDataFine() == null) maintenance.getMezzo().setStato(StatoMezzo.IN_MANUTENZIONE);
-        tr.commit();
-        System.out.println("Manutenzione id " + maintenance.getId() + " salvata con successo!");
+        if (maintenance.getMezzo().getStato() == StatoMezzo.RITIRATO) System.out.println("Errore: il mezzo " + maintenance.getMezzo().getId() + " è stato ritirato permanentemente dal servizio.");
+        else {
+            EntityTransaction tr = em.getTransaction();
+            tr.begin();
+            em.persist(maintenance);
+            System.out.println("Manutenzione id " + maintenance.getId() + " salvata con successo!");
+            if (maintenance.getDataFine() == null) {
+                maintenance.getMezzo().setStato(StatoMezzo.IN_MANUTENZIONE);
+                maintenance.getMezzo().getPeriodiServizio().get(maintenance.getMezzo().getPeriodiServizio().size() -1).setDataFine(maintenance.getDataInizio());
+            }
+            tr.commit();
+        }
     }
 
     public void saveInService(InServizio inService) {
-        EntityTransaction tr = em.getTransaction();
-        tr.begin();
-        em.persist(inService);
-        if (inService.getMezzo().getPeriodiManutenzione().size() == 20) inService.getMezzo().setStato(StatoMezzo.RITIRATO);
-        else inService.getMezzo().setStato(StatoMezzo.IN_SERVIZIO);
-        tr.commit();
-        System.out.println("InServizio id " + inService.getId() + " salvato con successo!");
+        if (inService.getMezzo().getStato() == StatoMezzo.RITIRATO) System.out.println("Errore: il mezzo " + inService.getMezzo().getId() + " è stato ritirato permanentemente dal servizio.");
+        else {
+            EntityTransaction tr = em.getTransaction();
+            tr.begin();
+            if (inService.getMezzo().getPeriodiManutenzione().size() == 20) {
+                inService.getMezzo().setStato(StatoMezzo.RITIRATO);
+                System.out.println("Il mezzo " + inService.getMezzo().getId() + " è stato appena ritirato dal servizio.");
+            } else {
+                em.persist(inService);
+                inService.getMezzo().setStato(StatoMezzo.IN_SERVIZIO);
+                inService.getMezzo().getPeriodiManutenzione().get(inService.getMezzo().getPeriodiManutenzione().size() - 1).setDataFine(inService.getDataInizio());
+                System.out.println("InServizio id " + inService.getId() + " salvato con successo!");
+            }
+            tr.commit();
+        }
     }
 
     public Stato findStatusById(long id) {

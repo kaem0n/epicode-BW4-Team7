@@ -7,11 +7,6 @@ import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@NamedQuery(
-        name = "Mezzo.contaTrattePerMezzo",
-        query = "SELECT COUNT(mt) FROM Mezzo m JOIN m.tratte mt WHERE m.id = :mezzoId AND mt.id = :trattaId")
-@NamedQuery(name = "Mezzo.calcolaTempoPercorrenzaMedio",
-        query = "SELECT AVG(tratta.tempoPercorrenza) FROM Mezzo mezzo JOIN mezzo.tratte tratta WHERE mezzo.id = :mezzoId")
 public abstract class Mezzo {
     @Id
     @GeneratedValue
@@ -20,18 +15,16 @@ public abstract class Mezzo {
     @Enumerated(EnumType.STRING)
     protected StatoMezzo stato;
     protected int capienza;
+    @Column(name = "percorsi_per_servizio")
+    protected int percorsiPerServizio;
     @OneToMany(mappedBy = "mezzo")
     protected List<InServizio> periodiServizio;
     @OneToMany(mappedBy = "mezzo")
     protected List<Manutenzione> periodiManutenzione;
     @OneToMany(mappedBy = "mezzo")
     protected List<Biglietto> biglietti;
-    @ManyToMany
-    @JoinTable(
-            name = "mezzo_tratta",
-            joinColumns = @JoinColumn(name = "mezzo_id"),
-            inverseJoinColumns = @JoinColumn(name = "tratta_id"))
-    protected List<Tratta> tratte;
+    @OneToMany(mappedBy = "mezzo")
+    protected List<Percorso> percorsi;
 
     public Mezzo() {}
 
@@ -59,12 +52,20 @@ public abstract class Mezzo {
         return biglietti;
     }
 
-    public List<Tratta> getTratte() {
-        return tratte;
+    public List<Percorso> getPercorsi() {
+        return percorsi;
+    }
+
+    public int getPercorsiPerServizio() {
+        return percorsiPerServizio;
     }
 
     public void setStato(StatoMezzo stato) {
         this.stato = stato;
+    }
+
+    public void setPercorsiPerServizio(int percorsiPerServizio) {
+        this.percorsiPerServizio = percorsiPerServizio;
     }
 
     @Override

@@ -1,10 +1,7 @@
 package bw4_team7;
 
 import bw4_team7.dao.*;
-import bw4_team7.entities.Biglietto;
-import bw4_team7.entities.Mezzo;
-import bw4_team7.entities.RivenditoreAutorizzato;
-import bw4_team7.entities.Utente;
+import bw4_team7.entities.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -25,8 +22,9 @@ public class Application {
         StatoDAO sd2 = new StatoDAO(em);
         TrattaDAO td = new TrattaDAO(em);
         UtenteDAO ud = new UtenteDAO(em);
+        PercorsoDAO pd = new PercorsoDAO(em);
 
-//       ud.save(new Utente("Mario", "Rossi", LocalDate.parse("2023-06-30")));
+//      ud.save(new Utente("Mario", "Rossi", LocalDate.parse("2023-06-30")));
 //      ud.save(new Utente("Maria", "Bianchi", LocalDate.parse("2024-01-20")));
 //      ud.save(new Utente("Giovanni", "Neri", LocalDate.parse("2023-02-18")));
 //      ud.save(new Utente("Marco", "Bruni", LocalDate.parse("2022-04-05")));
@@ -40,8 +38,8 @@ public class Application {
 //      rd.saveSeller(new DistributoreAutomatico("Distributore 3", StatoDistributore.ATTIVO));
 
         //CREAZIONE RIVENDITORE
-      RivenditoreAutorizzato riv1 = new RivenditoreAutorizzato("Rivenditore stazione");
-        rd.saveSeller(riv1);
+//      RivenditoreAutorizzato riv1 = new RivenditoreAutorizzato("Rivenditore stazione");
+//        rd.saveSeller(riv1);
 //
 //        //CREAZIONE UTENTE
 //       Utente utente1=new Utente("Maria","Rossi",LocalDate.now());
@@ -76,6 +74,19 @@ public class Application {
 //        td.save(new Tratta("Roma Termini", "Aeroporto di Fiumicino", 90));
 //        td.save(new Tratta("Roma Tiburtina", "Aeroporto di Fiumicino", 100));
 //        td.save(new Tratta("Colosseo", "Piazza del Popolo", 20));
+
+//        pd.save(new Percorso(LocalDate.now(), 70, md.findVehicleById(254), td.findRouteById(3)));
+//        pd.save(new Percorso(LocalDate.now(), 80, md.findVehicleById(254), td.findRouteById(4)));
+//        for (int i = 0; i < 41; i++) {
+//            pd.save(new Percorso(LocalDate.now(), 60, md.findVehicleById(302), td.findRouteById(1)));
+//        }
+
+//        sd2.saveInService(new InServizio(LocalDate.now(), md.findVehicleById(302)));
+
+//        pd.trattaPerMezzo(td.findRouteById(1), md.findVehicleById(252));
+//        pd.trattaPerMezzoPerData(td.findRouteById(1), md.findVehicleById(252), LocalDate.parse("2023-04-01"), LocalDate.parse("2023-05-01"));
+//        pd.calcolaMediaPercorrenza(td.findRouteById(1), md.findVehicleById(252));
+//        pd.calcolaMediaPercorrenzaPerData(td.findRouteById(1), md.findVehicleById(252), LocalDate.parse("2023-04-01"), LocalDate.parse("2023-05-01"));
 
 //        sd1.saveTicket(new Biglietto(LocalDate.of(2024, 1, 2), ud.findUserById(1), rd.findSellerById(1)));
 
@@ -173,7 +184,7 @@ public class Application {
                     mezzoId = scanner.nextLong();
                     System.out.println("Inserisci l'ID della tratta:");
                     trattaId = scanner.nextLong();
-                    md.contaTrattePerMezzo(mezzoId, trattaId);
+//                    md.contaTrattePerMezzo(mezzoId, trattaId);
                     break;
 
 
@@ -182,7 +193,7 @@ public class Application {
                     mezzoId = scanner.nextLong();
                     System.out.println("Inserisci l'ID della tratta da assegnare al mezzo:");
                     trattaId = scanner.nextLong();
-                    md.trattaAMezzo(mezzoId, trattaId);
+//                    md.trattaAMezzo(mezzoId, trattaId);
                     break;
 
                 case 4:
@@ -258,7 +269,7 @@ public class Application {
                     String cognome = scanner.nextLine();
                     Utente utente1=new Utente(nome,cognome,emissione);
      ud.save(utente1);
-                    Biglietto bigliettoNuovo = new Biglietto(emissione,utente1,riv1);
+                    Biglietto bigliettoNuovo = new Biglietto(emissione,utente1,rd.findSellerById(1));
                     rd.creaTicket(bigliettoNuovo);
                     break;
 

@@ -18,14 +18,14 @@ public class TrattaDAO {
         System.out.println("Tratta id " + path.getId() + " salvata con successo!");
     }
 
-    public Tratta findPathById(long id) {
+    public Tratta findRouteById(long id) {
         Tratta path = em.find(Tratta.class, id);
         if (path == null) throw new NotFoundException(id);
         else return path;
     }
 
     public void delete(long id) {
-        Tratta path = findPathById(id);
+        Tratta path = findRouteById(id);
         EntityTransaction tr = em.getTransaction();
         tr.begin();
         em.remove(path);

@@ -9,6 +9,7 @@ public class Tram extends Mezzo {
     public Tram() {
         super.capienza = 280;
         super.stato = StatoMezzo.IN_SERVIZIO;
+        super.percorsiPerServizio = 0;
     }
 
     @Override

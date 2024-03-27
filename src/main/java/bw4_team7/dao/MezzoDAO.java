@@ -19,6 +19,7 @@ public class MezzoDAO {
         EntityTransaction tr = em.getTransaction();
         tr.begin();
         em.persist(vehicle);
+        em.persist(new InServizio(LocalDate.now(), vehicle));
         tr.commit();
         System.out.println("Autobus id " + vehicle.getId() + " salvato con successo!");
     }
@@ -27,6 +28,7 @@ public class MezzoDAO {
         EntityTransaction tr = em.getTransaction();
         tr.begin();
         em.persist(vehicle);
+        em.persist(new InServizio(LocalDate.now(), vehicle));
         tr.commit();
         System.out.println("Tram id " + vehicle.getId() + " salvato con successo!");
     }
@@ -44,49 +46,6 @@ public class MezzoDAO {
         em.remove(vehicle);
         tr.commit();
         System.out.println("Mezzo cancellato con successo dal database.");
-    }
-
-    public void trattaAMezzo(long mezzoId, long trattaId) {
-        EntityTransaction tr = em.getTransaction();
-        tr.begin();
-
-        Mezzo mezzo = em.find(Mezzo.class, mezzoId);
-        Tratta tratta = em.find(Tratta.class, trattaId);
-
-        mezzo.getTratte().add(tratta);
-        tratta.getMezzi().add(mezzo);
-
-        em.persist(mezzo);
-        em.persist(tratta);
-
-        em.getTransaction().commit();
-        System.out.println("Tratta collegata a mezzo (junction-table). idMezzo:" + mezzoId + ", idTratta:" + trattaId);
-    }
-
-    public long contaTrattePerMezzo(long mezzoId, long trattaId) {
-        TypedQuery<Long> q = em.createNamedQuery("Mezzo.contaTrattePerMezzo", Long.class)
-                .setParameter("mezzoId", mezzoId)
-                .setParameter("trattaId", trattaId);
-
-        Long conteggio = q.getSingleResult();
-
-        System.out.println("Il mezzo con ID " + mezzoId + " ha percorso la tratta con ID " + trattaId + " per " + conteggio + " volte.");
-        return conteggio;
-    }
-
-    public double calcolaTempoPercorrenzaMedio(long mezzoId) {
-        TypedQuery<Double> q = em.createNamedQuery("Mezzo.calcolaTempoPercorrenzaMedio", Double.class)
-                .setParameter("mezzoId", mezzoId);
-
-        Double tempoMedio = q.getSingleResult();
-
-        if (tempoMedio == null) {
-            System.out.println("Nessuna tratta trovata per il mezzo con ID: " + mezzoId);
-            return 0.0; // Restituisco un valore di default.
-        } else {
-            System.out.println("Il tempo medio di percorrenza del mezzo con id " + mezzoId + " è di " + tempoMedio + " minuti.");
-            return tempoMedio;
-        }
     }
 
     public void validateTicket(Biglietto tk, Mezzo m, LocalDate l) {
