@@ -69,5 +69,19 @@ public class UtenteDAO {
 
     }
 
+    public void rinnovaTessera(long numeroTessera){
+        Utente utente = trovaUtentePerNumeroTessera(numeroTessera);
+        if (tesseraScaduta(numeroTessera)){
+            EntityTransaction et = em.getTransaction();
+            et.begin();
+            utente.setDataEmissione(LocalDate.now());
+            utente.setDataScadenza(LocalDate.now().plusYears(1));
+            et.commit();
+            System.out.println("La tua tessera è stata rinnovata");
+        }else {
+            System.out.println("La tua tessera non è ancora scaduta");
+        }
+    }
+
 
 }

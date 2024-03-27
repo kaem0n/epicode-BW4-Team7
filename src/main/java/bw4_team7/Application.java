@@ -8,7 +8,9 @@ import bw4_team7.entities.Utente;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import org.hibernate.event.spi.SaveOrUpdateEvent;
 
+import javax.sound.midi.Soundbank;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;
@@ -137,7 +139,9 @@ public class Application {
 
 //        md.calcolaTempoPercorrenzaMedio(2);
 
-        //CONTROLLO UTENTI CON TESSERA SCADUTA
+        //RINNOVA LA TESSERA
+        ud.rinnovaTessera(3);
+
 
 
         int scelta = 0;
@@ -158,7 +162,9 @@ public class Application {
             System.out.println("9) Per creare un biglietto;");
             System.out.println("10) Per contare i biglietti venduti da un determinato rivenditore;");
             System.out.println("11) Per controllare se la tua tessera è scaduta");
+            System.out.println("12) Per rinnovare la tua tessera");
             System.out.println("0) Per uscire dal programma; ");
+
 
 
             scelta = scanner.nextInt();
@@ -282,12 +288,20 @@ public class Application {
                     }
                     break;
 
+                case 12:
+                    System.out.println("Inserisci l'id della tua tessera");
+                    long tessId = Long.parseLong(scanner.nextLine());
+                    ud.rinnovaTessera(tessId);
+                    break;
+
+
                 default:
                     System.out.println("Scelta non valida. Riprova.");
                     break;
             }
 
         } while (true);
+
     }
 
 
