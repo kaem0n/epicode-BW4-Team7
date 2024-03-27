@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d477c4f5-836f-4ef6-a501-fd5b589d73e7" name="Changes" comment="created percorso class and its dao with methods + adapted statodao methods" />
+    <list default="true" id="d477c4f5-836f-4ef6-a501-fd5b589d73e7" name="Changes" comment="refactored saveMaintenance() method" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,7 +104,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711537668386</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="little fix in percorsoDAO.save()">
+      <option name="closed" value="true" />
+      <created>1711537749471</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1711537749471</updated>
+    </task>
+    <task id="LOCAL-00006" summary="refactored saveMaintenance() method">
+      <option name="closed" value="true" />
+      <created>1711538178813</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1711538178813</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -113,6 +129,8 @@
     <MESSAGE value="populated DAOs" />
     <MESSAGE value="created and tested subscription check method" />
     <MESSAGE value="created percorso class and its dao with methods + adapted statodao methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="created percorso class and its dao with methods + adapted statodao methods" />
+    <MESSAGE value="little fix in percorsoDAO.save()" />
+    <MESSAGE value="refactored saveMaintenance() method" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored saveMaintenance() method" />
   </component>
 </project>

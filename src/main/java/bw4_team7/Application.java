@@ -150,6 +150,7 @@ public class Application {
 
         int scelta = 0;
         long mezzoId, trattaId, ticketId, mezzoPerTicketId;
+        int minuti;
         Scanner scanner = new Scanner(System.in);
         do {
 
@@ -157,9 +158,9 @@ public class Application {
 
             System.out.println("1) Per contare le tratte per ogni mezzo; ");
             System.out.println("2) Per calcolare il tempo di percorrenza medio; ");
-            System.out.println("3) Per assegnare una tratta ad un mezzo; ");
+            System.out.println("3) Per registrare una tratta percorsa da un mezzo; ");
             System.out.println("4) Per vidimare i biglietti ed assegnarli al mezzo; ");
-            System.out.println("5) Per cercare i peridodi di servizio e manutenzione in base alla data;");
+            System.out.println("5) Per cercare i periodi di servizio e manutenzione in base alla data;");
             System.out.println("6) Per cercare i biglietti emessi in base alla data;");
             System.out.println("7) Per cercare i biglietti obliterati su uno specifico mezzo;");
             System.out.println("8) Per verificare la validità di un abbonamento in base ad utente;");
@@ -184,16 +185,25 @@ public class Application {
                     mezzoId = scanner.nextLong();
                     System.out.println("Inserisci l'ID della tratta:");
                     trattaId = scanner.nextLong();
-//                    md.contaTrattePerMezzo(mezzoId, trattaId);
+                    pd.trattaPerMezzo(td.findRouteById(trattaId), md.findVehicleById(mezzoId));
                     break;
 
+                case 2:
+                    System.out.println("Inserisci l'ID del mezzo:");
+                    mezzoId = scanner.nextLong();
+                    System.out.println("Inserisci l'ID della tratta:");
+                    trattaId = scanner.nextLong();
+                    pd.calcolaMediaPercorrenza(td.findRouteById(trattaId), md.findVehicleById(mezzoId));
+                    break;
 
                 case 3:
                     System.out.println("Inserisci l'ID del mezzo a cui assegnare una tratta:");
                     mezzoId = scanner.nextLong();
                     System.out.println("Inserisci l'ID della tratta da assegnare al mezzo:");
                     trattaId = scanner.nextLong();
-//                    md.trattaAMezzo(mezzoId, trattaId);
+                    System.out.println("Inserisci i minuti totali di percorrenza:");
+                    minuti = scanner.nextInt();
+                    pd.save(new Percorso(LocalDate.now(), minuti, md.findVehicleById(mezzoId), td.findRouteById(trattaId)));
                     break;
 
                 case 4:
@@ -268,7 +278,7 @@ public class Application {
                     System.out.println("Inserisci il cognome:");
                     String cognome = scanner.nextLine();
                     Utente utente1=new Utente(nome,cognome,emissione);
-     ud.save(utente1);
+                    ud.save(utente1);
                     Biglietto bigliettoNuovo = new Biglietto(emissione,utente1,rd.findSellerById(1));
                     rd.creaTicket(bigliettoNuovo);
                     break;
@@ -277,7 +287,7 @@ public class Application {
                     System.out.println("Inserisci l'id del rivenditore:");
                     long rivenditoreId = Long.parseLong(scanner.nextLine());
                     System.out.println("Questo Rivenditore ha venduto " + rd.serviziForRivenditore(rivenditoreId).size() + " biglietto/i");
-break;
+                    break;
 
                 default:
                     System.out.println("Scelta non valida. Riprova.");
