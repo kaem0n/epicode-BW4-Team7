@@ -137,6 +137,9 @@ public class Application {
 
 //        md.calcolaTempoPercorrenzaMedio(2);
 
+        //CONTROLLO UTENTI CON TESSERA SCADUTA
+
+
         int scelta = 0;
         long mezzoId, trattaId, ticketId, mezzoPerTicketId;
         Scanner scanner = new Scanner(System.in);
@@ -154,6 +157,7 @@ public class Application {
             System.out.println("8) Per verificare la validità di un abbonamento in base ad utente;");
             System.out.println("9) Per creare un biglietto;");
             System.out.println("10) Per contare i biglietti venduti da un determinato rivenditore;");
+            System.out.println("11) Per controllare se la tua tessera è scaduta");
             System.out.println("0) Per uscire dal programma; ");
 
 
@@ -257,7 +261,7 @@ public class Application {
                     System.out.println("Inserisci il cognome:");
                     String cognome = scanner.nextLine();
                     Utente utente1=new Utente(nome,cognome,emissione);
-     ud.save(utente1);
+                    ud.save(utente1);
                     Biglietto bigliettoNuovo = new Biglietto(emissione,utente1,riv1);
                     rd.creaTicket(bigliettoNuovo);
                     break;
@@ -266,7 +270,17 @@ public class Application {
                     System.out.println("Inserisci l'id del rivenditore:");
                     long rivenditoreId = Long.parseLong(scanner.nextLine());
                     System.out.println("Questo Rivenditore ha venduto " + rd.serviziForRivenditore(rivenditoreId).size() + " biglietto/i");
-break;
+                    break;
+
+                case 11:
+                    System.out.println("Inserisci l'id della tua tessera");
+                    long tesseraId = Long.parseLong(scanner.nextLine());
+                    if (ud.tesseraScaduta(tesseraId)){
+                        System.out.println("La tua tessera è scaduta");
+                    }else {
+                        System.out.println("La tua tessera è ancora valida");
+                    }
+                    break;
 
                 default:
                     System.out.println("Scelta non valida. Riprova.");
@@ -275,4 +289,6 @@ break;
 
         } while (true);
     }
+
+
 }

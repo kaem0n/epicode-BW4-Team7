@@ -7,6 +7,7 @@
     <list default="true" id="d477c4f5-836f-4ef6-a501-fd5b589d73e7" name="Changes" comment="created and tested subscription check method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/UtenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/UtenteDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,22 +55,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Application.executor": "Run",
-    "git-widget-placeholder": "Merging Rachele"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Application.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Rachele&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\anton\Desktop\EPICODE\Back End\Unità 1\Week 4\untitled\src\main\java\bw4_team7" />
       <recent name="C:\Users\anton\Desktop\EPICODE\Back End\Unità 1\Week 4\untitled\src\main" />
     </key>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-temurin-17.0.10-3183f394aec4-87f3d08d" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="23ba02eb-9ed5-4300-adc4-04416445beca" name="Changes" comment="" />
+      <changelist id="d477c4f5-836f-4ef6-a501-fd5b589d73e7" name="Changes" comment="created and tested subscription check method" />
       <created>1711362942583</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
