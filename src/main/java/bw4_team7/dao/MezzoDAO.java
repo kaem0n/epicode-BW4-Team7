@@ -7,6 +7,7 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class MezzoDAO {
     private final EntityManager em;
@@ -88,15 +89,27 @@ public class MezzoDAO {
     public String ricercaPeriodiDiStato(LocalDate data, Mezzo mezzo) {
         StringBuilder stato = new StringBuilder();
 
-        TypedQuery<InServizio> periodiServizio = em.createQuery("SELECT s FROM InServizio s WHERE s.mezzo = :mezzo AND s.dataInizio >= :data", InServizio.class);
-        periodiServizio.setParameter("mezzo", mezzo);
-        periodiServizio.setParameter("data", data);
-        periodiServizio.getResultList().forEach(System.out::println);
+        TypedQuery<InServizio> query1 = em.createQuery("SELECT s FROM InServizio s WHERE s.mezzo = :mezzo AND s.dataInizio >= :data", InServizio.class);
+        query1.setParameter("mezzo", mezzo);
+        query1.setParameter("data", data);
+        List<InServizio> listaInServizio = query1.getResultList();
+        if (listaInServizio.isEmpty()) System.out.println("Non sono stati trovati periodi di servizio per il mezzo " + mezzo.getId() + " a partire dal " + data + ".");
+        else {
+            System.out.println("Sono stati trovati " + listaInServizio.size() + " periodi di servizio per il mezzo " + mezzo.getId() + " a partire dal " + data + ":");
+            listaInServizio.forEach(inServizio -> System.out.println("- " +inServizio.toString()));
+            System.out.println();
+        }
 
-        TypedQuery<Manutenzione> periodiManutenzione = em.createQuery("SELECT m FROM Manutenzione m WHERE m.mezzo = :mezzo AND m.dataInizio >= :data", Manutenzione.class);
-        periodiManutenzione.setParameter("mezzo", mezzo);
-        periodiManutenzione.setParameter("data", data);
-        periodiManutenzione.getResultList().forEach(System.out::println);
+        TypedQuery<Manutenzione> query2 = em.createQuery("SELECT m FROM Manutenzione m WHERE m.mezzo = :mezzo AND m.dataInizio >= :data", Manutenzione.class);
+        query2.setParameter("mezzo", mezzo);
+        query2.setParameter("data", data);
+        List<Manutenzione> listaManutenzioni = query2.getResultList();
+        if (listaManutenzioni.isEmpty()) System.out.println("Non sono stati trovati periodi di manutenzione per il mezzo " + mezzo.getId() + " a partire dal " + data + ".");
+        else {
+            System.out.println("Sono stati trovati " + listaManutenzioni.size() + " periodi di manutenzione per il mezzo " + mezzo.getId() + " a partire dal " + data + ":");
+            listaManutenzioni.forEach(manutenzione -> System.out.println("- " +manutenzione.toString()));
+            System.out.println();
+        }
         return stato.toString();
     }
 }

@@ -3,6 +3,9 @@ package bw4_team7;
 import bw4_team7.dao.*;
 import bw4_team7.entities.*;
 import bw4_team7.enums.StatoDistributore;
+import bw4_team7.enums.StatoMezzo;
+import bw4_team7.enums.TipoUtente;
+import bw4_team7.exceptions.NotFoundException;
 import com.github.javafaker.Faker;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -27,6 +30,8 @@ public class Application {
         PercorsoDAO pd = new PercorsoDAO(em);
 
 //        fillDb(em);
+//        ud.save(new Utente(faker.name().firstName(), faker.name().lastName(), LocalDate.of(new Random().nextInt(2020, 2024), new Random().nextInt(1, 13), new Random().nextInt(1, 29)), TipoUtente.ADMIN));
+
 
         //CREAZIONE BIGLIETTO
 //           Biglietto biglietto = new Biglietto(LocalDate.now(),utente1,riv1);
@@ -120,151 +125,322 @@ public class Application {
 
 //        md.calcolaTempoPercorrenzaMedio(2);
 
-        int scelta = 0;
         long mezzoId, trattaId, ticketId, mezzoPerTicketId;
         int minuti;
-        Scanner scanner = new Scanner(System.in);
-        do {
+        Scanner sc = new Scanner(System.in);
 
+            System.out.println();
             System.out.println("---------------------------------------- BENVENUTO NEL GESTIONALE DELLA NOSTRA AZIENDA DI TRASPORTO -------------------------------------------");
+            System.out.println();
+            loop: while(true) {
+                try {
+                    System.out.println("Inserisci il tuo numero di tessera:");
+                    int numeroTessera = Integer.parseInt(sc.nextLine());
+                    Utente me = ud.findUserById(numeroTessera);
+                    System.out.println();
+                    System.out.println("Benvenuto " + me.getNome() + " " + me.getCognome() + " Tessera n. " + me.getNumeroTessera());
+                    System.out.println();
+                    System.out.println("Seleziona un'opzione:");
+                    if (me.getTipo() == TipoUtente.ADMIN) {
+                        admin: while(true) {
+                            System.out.println("1) Per contare le tratte per ogni mezzo;");
+                            System.out.println("2) Per calcolare il tempo di percorrenza medio;");
+                            System.out.println("3) Per registrare una tratta percorsa da un mezzo;");
+                            System.out.println("4) Per cercare i periodi di servizio e manutenzione in base alla data;");
+                            System.out.println("5) Per cercare i biglietti emessi in base alla data;");
+                            System.out.println("6) Per cercare i biglietti obliterati su uno specifico mezzo;");
+                            System.out.println("7) Per verificare la validità di un abbonamento in base ad utente;");
+                            System.out.println("8) Per contare i biglietti venduti da un determinato rivenditore;");
+                            System.out.println("0) Per uscire dal programma;");
+                            int scelta = Integer.parseInt(sc.nextLine());
+                            switch (scelta) {
+                                case 0 -> {
+                                    System.out.println("Uscita dal programma...");
+                                    System.out.println("Arrivederci e grazie!");
+                                    sc.close();
+                                    break loop;
+                                }
+                                case 1 -> {
+                                    case1: while(true) {
+                                        try {
+                                            System.out.println("Inserisci l'ID del mezzo:");
+                                            mezzoId = Long.parseLong(sc.nextLine());
+                                            System.out.println();
+                                            System.out.println("Inserisci l'ID della tratta:");
+                                            trattaId = Long.parseLong(sc.nextLine());
+                                            System.out.println();
+                                            pd.trattaPerMezzo(td.findRouteById(trattaId), md.findVehicleById(mezzoId));
+                                            System.out.println();
+                                            break case1;
+                                        } catch (NumberFormatException e) {
+                                            System.err.println("Inserisci un ID valido.");
+                                        } catch (NotFoundException e) {
+                                            System.err.println(e.getMessage());
+                                            break case1;
+                                        }
+                                    }
+                                }
+                                case 2 -> {
+                                    case2: while(true) {
+                                        try {
+                                            System.out.println("Inserisci l'ID del mezzo:");
+                                            mezzoId = Long.parseLong(sc.nextLine());
+                                            System.out.println("Inserisci l'ID della tratta:");
+                                            trattaId = Long.parseLong(sc.nextLine());
+                                            pd.calcolaMediaPercorrenza(td.findRouteById(trattaId), md.findVehicleById(mezzoId));
+                                            System.out.println();
+                                            break case2;
+                                        } catch (NumberFormatException e) {
+                                            System.err.println("Inserisci un ID valido.");
+                                        } catch (NotFoundException e) {
+                                            System.err.println(e.getMessage());
+                                            break case2;
+                                        } catch (NullPointerException e) {
+                                            System.err.println("Nessun risultato trovato.");
+                                            break case2;
+                                        }
+                                    }
+                                }
+                                case 3 -> {
+                                    case3: while(true) {
+                                        try {
+                                            System.out.println("Inserisci l'ID del mezzo che ha percorso la tratta:");
+                                            mezzoId = Long.parseLong(sc.nextLine());
+                                            System.out.println("Inserisci l'ID della tratta percorsa:");
+                                            trattaId = Long.parseLong(sc.nextLine());
+                                            Percorso nuovoPercorso = new Percorso(LocalDate.now(), md.findVehicleById(mezzoId), td.findRouteById(trattaId));
+                                            pd.save(nuovoPercorso);
+                                            if (md.findVehicleById(mezzoId).getStato() == StatoMezzo.IN_SERVIZIO) {
+                                                System.out.println(nuovoPercorso.toString());
+                                            }
+                                            System.out.println();
+                                            break case3;
+                                        } catch (NumberFormatException e) {
+                                            System.err.println("Inserisci un ID valido.");
+                                        } catch (NotFoundException e) {
+                                            System.err.println(e.getMessage());
+                                            break case3;
+                                        }
+                                    }
+                                }
+                                case 4 -> {
+                                    case4: while(true) {
+                                        try {
+                                            System.out.println("Inserisci una data per trovare lo stato del veicolo:");
+                                            LocalDate dataStatoVeicolo = LocalDate.parse(sc.nextLine());
+                                            System.out.println("Inserisci id del veicolo per trovare lo stato del veicolo in questa data:");
+                                            mezzoId = Long.parseLong(sc.nextLine());
+                                            Mezzo mezzoo = md.findVehicleById(mezzoId);
+                                            System.out.println();
+                                            md.ricercaPeriodiDiStato(dataStatoVeicolo, mezzoo);
+                                            System.out.println();
+                                            break case4;
+                                        } catch (DateTimeParseException e) {
+                                            System.err.println("Formato della data non valido. Assicurati di inserire la data nel formato (YYYY-MM-DD).");
+                                        } catch (NotFoundException e) {
+                                            System.err.println(e.getMessage());
+                                        }
+                                    }
+                                }
+                                case 5 -> {
+                                    System.out.println("Inserisci una data per visualizzare i biglietti emessi: ");
+                                    LocalDate data = LocalDate.parse(sc.nextLine());
+                                    List<Biglietto> biglietti = rd.ticketsForDate(data);
 
-            System.out.println("1) Per contare le tratte per ogni mezzo; ");
-            System.out.println("2) Per calcolare il tempo di percorrenza medio; ");
-            System.out.println("3) Per registrare una tratta percorsa da un mezzo; ");
-            System.out.println("4) Per vidimare i biglietti ed assegnarli al mezzo; ");
-            System.out.println("5) Per cercare i periodi di servizio e manutenzione in base alla data;");
-            System.out.println("6) Per cercare i biglietti emessi in base alla data;");
-            System.out.println("7) Per cercare i biglietti obliterati su uno specifico mezzo;");
-            System.out.println("8) Per verificare la validità di un abbonamento in base ad utente;");
-            System.out.println("9) Per creare un biglietto;");
-            System.out.println("10) Per contare i biglietti venduti da un determinato rivenditore;");
-            System.out.println("0) Per uscire dal programma; ");
-
-
-            scelta = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (scelta) {
-
-                case 0:
-                    System.out.println("Uscita dal programma...");
-                    System.out.println("Arrivederci e grazie!");
-                    scanner.close();
-                    return;
-
-                case 1:
-                    System.out.println("Inserisci l'ID del mezzo:");
-                    mezzoId = scanner.nextLong();
-                    System.out.println("Inserisci l'ID della tratta:");
-                    trattaId = scanner.nextLong();
-                    pd.trattaPerMezzo(td.findRouteById(trattaId), md.findVehicleById(mezzoId));
-                    break;
-
-                case 2:
-                    System.out.println("Inserisci l'ID del mezzo:");
-                    mezzoId = scanner.nextLong();
-                    System.out.println("Inserisci l'ID della tratta:");
-                    trattaId = scanner.nextLong();
-                    pd.calcolaMediaPercorrenza(td.findRouteById(trattaId), md.findVehicleById(mezzoId));
-                    break;
-
-                case 3:
-                    System.out.println("Inserisci l'ID del mezzo a cui assegnare una tratta:");
-                    mezzoId = scanner.nextLong();
-                    System.out.println("Inserisci l'ID della tratta da assegnare al mezzo:");
-                    trattaId = scanner.nextLong();
-                    pd.save(new Percorso(LocalDate.now(), md.findVehicleById(mezzoId), td.findRouteById(trattaId)));
-                    break;
-
-                case 4:
-                    System.out.println("Inserisci l'id del ticket da cercare:");
-                    ticketId = scanner.nextLong();
-                    Biglietto biglietto2 = em.find(Biglietto.class, ticketId);
-                    if (biglietto2 != null) {
-                        System.out.println("Biglietto trovato: " + biglietto2.toString());
-                        System.out.println("Inserisci l'id del veicolo da assegnare al ticket: ");
-                        mezzoPerTicketId = scanner.nextLong();
-                        Mezzo mezzo = em.find(Mezzo.class, mezzoPerTicketId);
-                        md.validateTicket(biglietto2, mezzo, LocalDate.now());
-                    } else {
-                        System.out.println("Nessun biglietto trovato con ID: " + ticketId);
-                    }
-                    break;
-
-                case 5:
-                    System.out.println("Inserisci una data per trovare lo stato del veicolo:");
-                    String input = scanner.nextLine();
-                    LocalDate dataStatoVeicolo;
-                    try {
-                        dataStatoVeicolo = LocalDate.parse(input);
-                    } catch (DateTimeParseException e) {
-                        System.out.println("Formato della data non valido. Assicurati di inserire la data nel formato YYYY-MM-DD.");
-                        break;
-                    }
-
-                    System.out.println("Inserisci id del veicolo per trovare lo stato del veicolo in questa data:");
-                    mezzoId = Long.parseLong(scanner.nextLine());
-                    Mezzo mezzoo = em.find(Mezzo.class, mezzoId);
-
-                    if (mezzoo != null | dataStatoVeicolo != null) {
-                        System.out.println("Stato veicolo in data " + dataStatoVeicolo + " :");
-                        md.ricercaPeriodiDiStato(dataStatoVeicolo, mezzoo);
-                    } else {
-                        System.out.println("Nessun mezzo trovato con id: " + mezzoId + " in data " + dataStatoVeicolo);
-                    }
-                    break;
-
-                case 6:
-                    System.out.println("Inserisci una data per visualizzare i biglietti emessi: ");
-                    LocalDate data = LocalDate.parse(scanner.nextLine());
-                    List<Biglietto> biglietti = rd.ticketsForDate(data);
-
-                    if (biglietti.isEmpty()) {
-                        System.out.println("Nessun biglietto emesso in questa data.");
-                    } else {
-                        System.out.println("Biglietti emessi in data " + data + " :");
-                        for (Biglietto bigliettoo : biglietti) {
-                            System.out.println(bigliettoo);
+                                    if (biglietti.isEmpty()) {
+                                        System.out.println("Non ci sono biglietti emessi in questa data.");
+                                    } else {
+                                        System.out.println("Biglietti emessi il " + data + ":");
+                                        for (Biglietto bigliettoo : biglietti) {
+                                            System.out.println(bigliettoo);
+                                        }
+                                    }
+                                }
+                                case 6 -> {
+                                    System.out.println("Inserisci l'id di un mezzo per cercare i biglietti obliterati su di esso:");
+                                    long idMezzo = Long.parseLong(sc.nextLine());
+                                    md.totaleBigliettiObliteratiSuUnMezzo(md.findVehicleById(idMezzo));
+                                }
+                                case 7 -> {
+                                    System.out.println("Inserisci il numero di abbonamento di utente per verificarne la validità:");
+                                    long cardNumber = Long.parseLong(sc.nextLine());
+                                    sd1.checkSubscription(cardNumber);
+                                }
+                                case 8 -> {
+                                    System.out.println("Inserisci l'id del rivenditore:");
+                                    long rivenditoreId = Long.parseLong(sc.nextLine());
+                                    System.out.println("Questo Rivenditore ha venduto " + rd.serviziForRivenditore(rivenditoreId).size() + " biglietto/i");
+                                }
+                                default -> System.err.println("Scelta non valida. Riprova.");
+                            }
                         }
+                    } else {
+
                     }
-                    break;
-                case 7:
-                    System.out.println("Inserisci l'id di un mezzo per cercare i biglietti obliterati su di esso:");
-                    long idMezzo = Long.parseLong(scanner.nextLine());
-                    md.totaleBigliettiObliteratiSuUnMezzo(md.findVehicleById(idMezzo));
-                    break;
+                } catch (NumberFormatException e) {
+                    System.err.println("Inserisci un numero valido.");
+                    System.out.println();
+                } catch (NotFoundException e) {
+                    System.err.println(e.getMessage());
+                    System.out.println();
+                }
 
-                case 8:
-                    System.out.println("Inserisci il numero di abbonamento di utente per verificarne la validità:");
-                    long cardNumber = Long.parseLong(scanner.nextLine());
-                    sd1.checkSubscription(cardNumber);
-                    break;
-
-                case 9:
-                    System.out.println("Inserisci la data per creare il biglietto:");
-                    LocalDate emissione = LocalDate.parse(scanner.nextLine());
-                    System.out.println("Inserisci il nome dell'utente:");
-                    String nome = scanner.nextLine();
-                    System.out.println("Inserisci il cognome:");
-                    String cognome = scanner.nextLine();
-                    Utente utente1=new Utente(nome,cognome,emissione);
-                    ud.save(utente1);
-                    Biglietto bigliettoNuovo = new Biglietto(emissione,utente1,rd.findSellerById(1));
-                    rd.creaTicket(bigliettoNuovo);
-                    break;
-
-                case 10:
-                    System.out.println("Inserisci l'id del rivenditore:");
-                    long rivenditoreId = Long.parseLong(scanner.nextLine());
-                    System.out.println("Questo Rivenditore ha venduto " + rd.serviziForRivenditore(rivenditoreId).size() + " biglietto/i");
-                    break;
-
-                default:
-                    System.out.println("Scelta non valida. Riprova.");
-                    break;
             }
 
-        } while (true);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        do {
+//
+//
+//
+//            System.out.println("4) Per vidimare i biglietti ed assegnarli al mezzo; ");
+//            System.out.println("9) Per creare un biglietto;");
+//            System.out.println("0) Per uscire dal programma; ");
+//
+//
+//            scelta = sc.nextInt();
+//            sc.nextLine();
+//
+//            switch (scelta) {
+//
+//                case 0:
+//                    System.out.println("Uscita dal programma...");
+//                    System.out.println("Arrivederci e grazie!");
+//                    sc.close();
+//                    return;
+//
+//                case 1:
+//                    System.out.println("Inserisci l'ID del mezzo:");
+//                    mezzoId = Long.parseLong(sc.nextLine());
+//                    System.out.println("Inserisci l'ID della tratta:");
+//                    trattaId = Long.parseLong(sc.nextLine());
+//                    pd.trattaPerMezzo(td.findRouteById(trattaId), md.findVehicleById(mezzoId));
+//                    break;
+//
+//                case 2:
+//                    System.out.println("Inserisci l'ID del mezzo:");
+//                    mezzoId = Long.parseLong(sc.nextLine());
+//                    System.out.println("Inserisci l'ID della tratta:");
+//                    trattaId = Long.parseLong(sc.nextLine());
+//                    pd.calcolaMediaPercorrenza(td.findRouteById(trattaId), md.findVehicleById(mezzoId));
+//                    break;
+//
+//                case 3:
+//                    System.out.println("Inserisci l'ID del mezzo a cui assegnare una tratta:");
+//                    mezzoId = Long.parseLong(sc.nextLine());
+//                    System.out.println("Inserisci l'ID della tratta da assegnare al mezzo:");
+//                    trattaId = Long.parseLong(sc.nextLine());
+//                    pd.save(new Percorso(LocalDate.now(), md.findVehicleById(mezzoId), td.findRouteById(trattaId)));
+//                    break;
+//
+//                case 4:
+//                    System.out.println("Inserisci l'id del ticket da cercare:");
+//                    ticketId = Long.parseLong(sc.nextLine());
+//                    Biglietto biglietto2 = em.find(Biglietto.class, ticketId);
+//                    if (biglietto2 != null) {
+//                        System.out.println("Biglietto trovato: " + biglietto2.toString());
+//                        System.out.println("Inserisci l'id del veicolo da assegnare al ticket: ");
+//                        mezzoPerTicketId = Long.parseLong(sc.nextLine());
+//                        Mezzo mezzo = em.find(Mezzo.class, mezzoPerTicketId);
+//                        md.validateTicket(biglietto2, mezzo, LocalDate.now());
+//                    } else {
+//                        System.out.println("Nessun biglietto trovato con ID: " + ticketId);
+//                    }
+//                    break;
+//
+//                case 5:
+//                    System.out.println("Inserisci una data per trovare lo stato del veicolo:");
+//                    String input = sc.nextLine();
+//                    LocalDate dataStatoVeicolo;
+//                    try {
+//                        dataStatoVeicolo = LocalDate.parse(input);
+//                    } catch (DateTimeParseException e) {
+//                        System.out.println("Formato della data non valido. Assicurati di inserire la data nel formato YYYY-MM-DD.");
+//                        break;
+//                    }
+//
+//                    System.out.println("Inserisci id del veicolo per trovare lo stato del veicolo in questa data:");
+//                    mezzoId = Long.parseLong(sc.nextLine());
+//                    Mezzo mezzoo = em.find(Mezzo.class, mezzoId);
+//
+//                    if (mezzoo != null | dataStatoVeicolo != null) {
+//                        System.out.println("Stato veicolo in data " + dataStatoVeicolo + " :");
+//                        md.ricercaPeriodiDiStato(dataStatoVeicolo, mezzoo);
+//                    } else {
+//                        System.out.println("Nessun mezzo trovato con id: " + mezzoId + " in data " + dataStatoVeicolo);
+//                    }
+//                    break;
+//
+//                case 6:
+//                    System.out.println("Inserisci una data per visualizzare i biglietti emessi: ");
+//                    LocalDate data = LocalDate.parse(sc.nextLine());
+//                    List<Biglietto> biglietti = rd.ticketsForDate(data);
+//
+//                    if (biglietti.isEmpty()) {
+//                        System.out.println("Nessun biglietto emesso in questa data.");
+//                    } else {
+//                        System.out.println("Biglietti emessi in data " + data + " :");
+//                        for (Biglietto bigliettoo : biglietti) {
+//                            System.out.println(bigliettoo);
+//                        }
+//                    }
+//                    break;
+//                case 7:
+//                    System.out.println("Inserisci l'id di un mezzo per cercare i biglietti obliterati su di esso:");
+//                    long idMezzo = Long.parseLong(sc.nextLine());
+//                    md.totaleBigliettiObliteratiSuUnMezzo(md.findVehicleById(idMezzo));
+//                    break;
+//
+//                case 8:
+//                    System.out.println("Inserisci il numero di abbonamento di utente per verificarne la validità:");
+//                    long cardNumber = Long.parseLong(sc.nextLine());
+//                    sd1.checkSubscription(cardNumber);
+//                    break;
+//
+//                case 9:
+//                    System.out.println("Inserisci la data per creare il biglietto:");
+//                    LocalDate emissione = LocalDate.parse(sc.nextLine());
+//                    System.out.println("Inserisci il nome dell'utente:");
+//                    String nome = sc.nextLine();
+//                    System.out.println("Inserisci il cognome:");
+//                    String cognome = sc.nextLine();
+//                    Utente utente1=new Utente(nome,cognome,emissione);
+//                    ud.save(utente1);
+//                    Biglietto bigliettoNuovo = new Biglietto(emissione,utente1,rd.findSellerById(1));
+//                    rd.creaTicket(bigliettoNuovo);
+//                    break;
+//
+//                case 10:
+//                    System.out.println("Inserisci l'id del rivenditore:");
+//                    long rivenditoreId = Long.parseLong(sc.nextLine());
+//                    System.out.println("Questo Rivenditore ha venduto " + rd.serviziForRivenditore(rivenditoreId).size() + " biglietto/i");
+//                    break;
+//
+//                default:
+//                    System.out.println("Scelta non valida. Riprova.");
+//                    break;
+//            }
+//
+//        } while (true);
     }
 
     public static void fillDb(EntityManager em) {
@@ -276,6 +452,7 @@ public class Application {
         UtenteDAO ud = new UtenteDAO(em);
         PercorsoDAO pd = new PercorsoDAO(em);
 
+        ud.save(new Utente(faker.name().firstName(), faker.name().lastName(), LocalDate.of(new Random().nextInt(2020, 2024), new Random().nextInt(1, 13), new Random().nextInt(1, 29)), TipoUtente.ADMIN));
         for (int i = 0; i < 10; i++) {
             md.saveBusWithDate(new Autobus(), LocalDate.of(new Random().nextInt(2017, 2024), new Random().nextInt(1, 13), new Random().nextInt(1, 29)));
             md.saveTramWithDate(new Tram(), LocalDate.of(new Random().nextInt(2017, 2024), new Random().nextInt(1, 13), new Random().nextInt(1, 29)));

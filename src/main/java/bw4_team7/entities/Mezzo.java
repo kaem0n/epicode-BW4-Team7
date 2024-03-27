@@ -74,6 +74,7 @@ public abstract class Mezzo {
                 "id=" + id +
                 ", stato=" + stato +
                 ", capienza=" + capienza +
+                ", percorsiPerServizio=" + percorsiPerServizio +
                 '}';
     }
 }

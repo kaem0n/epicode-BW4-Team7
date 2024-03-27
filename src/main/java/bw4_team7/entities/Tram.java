@@ -18,6 +18,7 @@ public class Tram extends Mezzo {
                 "id=" + id +
                 ", stato=" + stato +
                 ", capienza=" + capienza +
+                ", percorsiPerServizio=" + percorsiPerServizio +
                 '}';
     }
 }
