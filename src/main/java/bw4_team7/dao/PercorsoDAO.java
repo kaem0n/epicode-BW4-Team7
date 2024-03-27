@@ -32,6 +32,7 @@ public class PercorsoDAO {
                 if (path.getMezzo().getPeriodiManutenzione().size() == 20) {
                     System.out.println("ATTENZIONE: Il mezzo " + path.getMezzo().getId() + " è stato ritirato dal servizio.");
                     path.getMezzo().setStato(StatoMezzo.RITIRATO);
+                    path.getMezzo().setPercorsiPerServizio(0);
                 }
                 else {
                     System.out.println("ATTENZIONE: Il mezzo " + path.getMezzo().getId() + " sta andando in manutenzione.");
