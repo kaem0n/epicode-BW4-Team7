@@ -10,7 +10,9 @@ import com.github.javafaker.Faker;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import org.hibernate.event.spi.SaveOrUpdateEvent;
 
+import javax.sound.midi.Soundbank;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.*;
@@ -125,6 +127,12 @@ public class Application {
 
 //        md.calcolaTempoPercorrenzaMedio(2);
 
+        //RINNOVA LA TESSERA
+        ud.rinnovaTessera(3);
+
+
+
+        int scelta = 0;
         long mezzoId, trattaId, ticketId, mezzoPerTicketId;
         int minuti;
         Scanner sc = new Scanner(System.in);
@@ -412,6 +420,21 @@ public class Application {
 
 
 
+//                case 11:
+//                    System.out.println("Inserisci l'id della tua tessera");
+//                    long tesseraId = Long.parseLong(scanner.nextLine());
+//                    if (ud.tesseraScaduta(tesseraId)){
+//                        System.out.println("La tua tessera è scaduta");
+//                    }else {
+//                        System.out.println("La tua tessera è ancora valida");
+//                    }
+//                    break;
+//
+//                case 12:
+//                    System.out.println("Inserisci l'id della tua tessera");
+//                    long tessId = Long.parseLong(scanner.nextLine());
+//                    ud.rinnovaTessera(tessId);
+//                    break;
 
 
 
@@ -587,4 +610,6 @@ public class Application {
         td.save(new Tratta("Colosseo", "Piazza del Popolo", 20));
         td.save(new Tratta("Piazza del Popolo", "Colosseo", 20));
     }
+
+
 }

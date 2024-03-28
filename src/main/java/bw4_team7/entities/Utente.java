@@ -59,6 +59,14 @@ public class Utente {
         return dataEmissione;
     }
 
+    public void setDataEmissione(LocalDate dataEmissione) {
+        this.dataEmissione = dataEmissione;
+    }
+
+    public void setDataScadenza(LocalDate dataScadenza) {
+        this.dataScadenza = dataScadenza;
+    }
+
     public LocalDate getDataScadenza() {
         return dataScadenza;
     }
