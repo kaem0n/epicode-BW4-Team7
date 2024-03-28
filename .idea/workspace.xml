@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d477c4f5-836f-4ef6-a501-fd5b589d73e7" name="Changes" comment="pulizia">
+    <list default="true" id="d477c4f5-836f-4ef6-a501-fd5b589d73e7" name="Changes" comment="polished fillDb() method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/Application.java" afterDir="false" />
     </list>
@@ -181,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711623980420</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="merge fix">
+      <option name="closed" value="true" />
+      <created>1711625587358</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1711625587358</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -199,6 +207,8 @@
     <MESSAGE value="finished user scanner" />
     <MESSAGE value="added more methods to user scanner" />
     <MESSAGE value="pulizia" />
-    <option name="LAST_COMMIT_MESSAGE" value="pulizia" />
+    <MESSAGE value="merge fix" />
+    <MESSAGE value="polished fillDb() method" />
+    <option name="LAST_COMMIT_MESSAGE" value="polished fillDb() method" />
   </component>
 </project>
