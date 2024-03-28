@@ -32,105 +32,6 @@ public class Application {
         PercorsoDAO pd = new PercorsoDAO(em);
 
 //        fillDb(em);
-//        ud.save(new Utente(faker.name().firstName(), faker.name().lastName(), LocalDate.of(new Random().nextInt(2020, 2024), new Random().nextInt(1, 13), new Random().nextInt(1, 29)), TipoUtente.ADMIN));
-
-
-        //CREAZIONE BIGLIETTO
-//           Biglietto biglietto = new Biglietto(LocalDate.now(),utente1,riv1);
-
-        //IL RIVENDITORE STAMPA E RESTITUISCE IL BIGLIETTO
-        /*        rd.creaTicket(biglietto);*/
-
-        //CREAZIONE ABBONAMENTO
-        /*        Abbonamento abbonamento = new Abbonamento(LocalDate.now(),utente1,riv1, TipoAbbonamento.MENSILE);*/
-
-        //IL RIVENDITORE STAMPA E RESTITUISCE L'ABBONAMENTO
-        /*        rd.creaSubscription(abbonamento);*/
-
-        //QUANTITA' DI BIGLIETTI VENDUTI IN BASE AL RIVENDITORE
-//        System.out.println("Questo Rivenditore ha venduto " + rd.serviziForRivenditore(12).size() + " biglietto/i");
-
-//        System.out.println(rd.ticketsForDate(LocalDate.now()));
-
-//        pd.save(new Percorso(LocalDate.now(), 80, md.findVehicleById(254), td.findRouteById(4)));
-//        for (int i = 0; i < 20; i++) {
-//        pd.save(new Percorso(LocalDate.now(), md.findVehicleById(1), td.findRouteById(1)));
-//        pd.save(new Percorso(LocalDate.now(), md.findVehicleById(1), td.findRouteById(2)));
-//        }
-
-//        sd2.saveInService(new InServizio(LocalDate.now(), md.findVehicleById(1)));
-
-//        sd2.saveInService(new InServizio(LocalDate.now(), md.findVehicleById(302)));
-
-//        pd.trattaPerMezzo(td.findRouteById(1), md.findVehicleById(252));
-//        pd.trattaPerMezzoPerData(td.findRouteById(1), md.findVehicleById(252), LocalDate.parse("2023-04-01"), LocalDate.parse("2023-05-01"));
-//        pd.calcolaMediaPercorrenza(td.findRouteById(1), md.findVehicleById(252));
-//        pd.calcolaMediaPercorrenzaPerData(td.findRouteById(1), md.findVehicleById(252), LocalDate.parse("2023-04-01"), LocalDate.parse("2023-05-01"));
-
-//        sd1.saveTicket(new Biglietto(LocalDate.of(2024, 1, 2), ud.findUserById(1), rd.findSellerById(1)));
-
-//        sd2.saveMaintenance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(4)));
-
-//        md.saveBus(new Autobus());md.saveBus(new Autobus());md.saveBus(new Autobus());md.saveBus(new Autobus());
-//        md.saveTram(new Tram());md.saveTram(new Tram());md.saveTram(new Tram());md.saveTram(new Tram());
-
-        // SET DATA FINE MANUTENZIONE
-//        sd2.definitedFinishMaintenance(1, LocalDate.of(2024, 4,2));
-//
-
-        // VALIDAZIONE BIGLIETTO
-//        md.validateTicket(sd1.findTicketById(2), md.findVehicleById(59), LocalDate.now());
-
-        // BIGLIETTI OBLITERATI PER MEZZO
-//        md.totaleBigliettiObliteratiSuUnMezzo(md.findVehicleById(59));
-
-        // BIGLIETTI OBLITERATI PER PERIODO
-//        sd1.ricercaBigliettiObliteratiPerData(LocalDate.of(2020,1,1), LocalDate.now());
-
-        // PERIODI DI SERVIZI E MANUTENZIONE IN BASE ALLA DATA
-//        md.ricercaPeriodiDiStato(LocalDate.of(2020,2,2), md.findVehicleById(4));
-
-        //                    md.totaleBigliettiObliteratiSuUnMezzo(md.findVehicleById(59));
-
-
-//        sd2.saveMaintenance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(4)));
-
-//        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(1), rd.findSellerById(2), TipoAbbonamento.SETTIMANALE));
-//        sd1.saveSubscription(new Abbonamento(LocalDate.parse("2024-03-04"), ud.findUserById(3), rd.findSellerById(4), TipoAbbonamento.SETTIMANALE));
-//        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(2), rd.findSellerById(3), TipoAbbonamento.MENSILE));
-
-//        sd1.checkSubscription(4);
-
-
-//        System.out.println(rd.ticketsForDate(LocalDate.now()));
-
-
-//        md.calcolaTempoPercorrenzaMedio(2);
-
-        //RICERCA DEI SERVIZI ASSOCIATI AL NUMERO DI TESSERA
-//        ud.trovaServiziPerNumeroTessera(2);
-
-        // RICERCA UTENTE PER NUMERO TESSERA
-//        ud.trovaUtentePerNumeroTessera(3);
-
-//        sd2.saveMaintenance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(56)));
-
-//        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(1), rd.findSellerById(2), TipoAbbonamento.SETTIMANALE));
-//        sd1.saveSubscription(new Abbonamento(LocalDate.parse("2024-03-04"), ud.findUserById(3), rd.findSellerById(4), TipoAbbonamento.SETTIMANALE));
-//        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(2), rd.findSellerById(3), TipoAbbonamento.MENSILE));
-
-//        sd1.checkSubscription(4);
-
-
-//        System.out.println(rd.ticketsForDate(LocalDate.now()));
-
-
-//        md.calcolaTempoPercorrenzaMedio(2);
-
-        //RINNOVA LA TESSERA
-//        ud.rinnovaTessera(3);
-
-
 
         long mezzoId, trattaId, ticketId, mezzoPerTicketId;
         int minuti;
@@ -416,175 +317,98 @@ public class Application {
                     System.err.println(e.getMessage());
                     System.out.println();
                 }
-
             }
 
 
+        //CREAZIONE BIGLIETTO
+//           Biglietto biglietto = new Biglietto(LocalDate.now(),utente1,riv1);
 
+        //IL RIVENDITORE STAMPA E RESTITUISCE IL BIGLIETTO
+        /*        rd.creaTicket(biglietto);*/
 
+        //CREAZIONE ABBONAMENTO
+        /*        Abbonamento abbonamento = new Abbonamento(LocalDate.now(),utente1,riv1, TipoAbbonamento.MENSILE);*/
 
+        //IL RIVENDITORE STAMPA E RESTITUISCE L'ABBONAMENTO
+        /*        rd.creaSubscription(abbonamento);*/
 
+        //QUANTITA' DI BIGLIETTI VENDUTI IN BASE AL RIVENDITORE
+//        System.out.println("Questo Rivenditore ha venduto " + rd.serviziForRivenditore(12).size() + " biglietto/i");
 
-//                case 11:
-//                    System.out.println("Inserisci l'id della tua tessera");
-//                    long tesseraId = Long.parseLong(scanner.nextLine());
-//                    if (ud.tesseraScaduta(tesseraId)){
-//                        System.out.println("La tua tessera è scaduta");
-//                    }else {
-//                        System.out.println("La tua tessera è ancora valida");
-//                    }
-//                    break;
-//
-//                case 12:
-//                    System.out.println("Inserisci l'id della tua tessera");
-//                    long tessId = Long.parseLong(scanner.nextLine());
-//                    ud.rinnovaTessera(tessId);
-//                    break;
+//        System.out.println(rd.ticketsForDate(LocalDate.now()));
 
+//        pd.save(new Percorso(LocalDate.now(), 80, md.findVehicleById(254), td.findRouteById(4)));
+//        for (int i = 0; i < 20; i++) {
+//        pd.save(new Percorso(LocalDate.now(), md.findVehicleById(1), td.findRouteById(1)));
+//        pd.save(new Percorso(LocalDate.now(), md.findVehicleById(1), td.findRouteById(2)));
+//        }
 
+//        sd2.saveInService(new InServizio(LocalDate.now(), md.findVehicleById(1)));
 
+//        sd2.saveInService(new InServizio(LocalDate.now(), md.findVehicleById(302)));
 
+//        pd.trattaPerMezzo(td.findRouteById(1), md.findVehicleById(252));
+//        pd.trattaPerMezzoPerData(td.findRouteById(1), md.findVehicleById(252), LocalDate.parse("2023-04-01"), LocalDate.parse("2023-05-01"));
+//        pd.calcolaMediaPercorrenza(td.findRouteById(1), md.findVehicleById(252));
+//        pd.calcolaMediaPercorrenzaPerData(td.findRouteById(1), md.findVehicleById(252), LocalDate.parse("2023-04-01"), LocalDate.parse("2023-05-01"));
 
+//        sd1.saveTicket(new Biglietto(LocalDate.of(2024, 1, 2), ud.findUserById(1), rd.findSellerById(1)));
 
+//        sd2.saveMaintenance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(4)));
 
+//        md.saveBus(new Autobus());md.saveBus(new Autobus());md.saveBus(new Autobus());md.saveBus(new Autobus());
+//        md.saveTram(new Tram());md.saveTram(new Tram());md.saveTram(new Tram());md.saveTram(new Tram());
 
+        // SET DATA FINE MANUTENZIONE
+//        sd2.definitedFinishMaintenance(1, LocalDate.of(2024, 4,2));
+//
 
+        // VALIDAZIONE BIGLIETTO
+//        md.validateTicket(sd1.findTicketById(2), md.findVehicleById(59), LocalDate.now());
 
+        // BIGLIETTI OBLITERATI PER MEZZO
+//        md.totaleBigliettiObliteratiSuUnMezzo(md.findVehicleById(59));
 
+        // BIGLIETTI OBLITERATI PER PERIODO
+//        sd1.ricercaBigliettiObliteratiPerData(LocalDate.of(2020,1,1), LocalDate.now());
 
+        // PERIODI DI SERVIZI E MANUTENZIONE IN BASE ALLA DATA
+//        md.ricercaPeriodiDiStato(LocalDate.of(2020,2,2), md.findVehicleById(4));
 
+        //                    md.totaleBigliettiObliteratiSuUnMezzo(md.findVehicleById(59));
 
+//        sd2.saveMaintenance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(4)));
 
-//        do {
-//
-//
-//
-//
-//
-//            scelta = sc.nextInt();
-//            sc.nextLine();
-//
-//            switch (scelta) {
-//
-//                case 0:
-//                    System.out.println("Uscita dal programma...");
-//                    System.out.println("Arrivederci e grazie!");
-//                    sc.close();
-//                    return;
-//
-//                case 1:
-//                    System.out.println("Inserisci l'ID del mezzo:");
-//                    mezzoId = Long.parseLong(sc.nextLine());
-//                    System.out.println("Inserisci l'ID della tratta:");
-//                    trattaId = Long.parseLong(sc.nextLine());
-//                    pd.trattaPerMezzo(td.findRouteById(trattaId), md.findVehicleById(mezzoId));
-//                    break;
-//
-//                case 2:
-//                    System.out.println("Inserisci l'ID del mezzo:");
-//                    mezzoId = Long.parseLong(sc.nextLine());
-//                    System.out.println("Inserisci l'ID della tratta:");
-//                    trattaId = Long.parseLong(sc.nextLine());
-//                    pd.calcolaMediaPercorrenza(td.findRouteById(trattaId), md.findVehicleById(mezzoId));
-//                    break;
-//
-//                case 3:
-//                    System.out.println("Inserisci l'ID del mezzo a cui assegnare una tratta:");
-//                    mezzoId = Long.parseLong(sc.nextLine());
-//                    System.out.println("Inserisci l'ID della tratta da assegnare al mezzo:");
-//                    trattaId = Long.parseLong(sc.nextLine());
-//                    pd.save(new Percorso(LocalDate.now(), md.findVehicleById(mezzoId), td.findRouteById(trattaId)));
-//                    break;
-//
-//                case 4:
-//                    System.out.println("Inserisci l'id del ticket da cercare:");
-//                    ticketId = Long.parseLong(sc.nextLine());
-//                    Biglietto biglietto2 = em.find(Biglietto.class, ticketId);
-//                    if (biglietto2 != null) {
-//                        System.out.println("Biglietto trovato: " + biglietto2.toString());
-//                        System.out.println("Inserisci l'id del veicolo da assegnare al ticket: ");
-//                        mezzoPerTicketId = Long.parseLong(sc.nextLine());
-//                        Mezzo mezzo = em.find(Mezzo.class, mezzoPerTicketId);
-//                        md.validateTicket(biglietto2, mezzo, LocalDate.now());
-//                    } else {
-//                        System.out.println("Nessun biglietto trovato con ID: " + ticketId);
-//                    }
-//                    break;
-//
-//                case 5:
-//                    System.out.println("Inserisci una data per trovare lo stato del veicolo:");
-//                    String input = sc.nextLine();
-//                    LocalDate dataStatoVeicolo;
-//                    try {
-//                        dataStatoVeicolo = LocalDate.parse(input);
-//                    } catch (DateTimeParseException e) {
-//                        System.out.println("Formato della data non valido. Assicurati di inserire la data nel formato YYYY-MM-DD.");
-//                        break;
-//                    }
-//
-//                    System.out.println("Inserisci id del veicolo per trovare lo stato del veicolo in questa data:");
-//                    mezzoId = Long.parseLong(sc.nextLine());
-//                    Mezzo mezzoo = em.find(Mezzo.class, mezzoId);
-//
-//                    if (mezzoo != null | dataStatoVeicolo != null) {
-//                        System.out.println("Stato veicolo in data " + dataStatoVeicolo + " :");
-//                        md.ricercaPeriodiDiStato(dataStatoVeicolo, mezzoo);
-//                    } else {
-//                        System.out.println("Nessun mezzo trovato con id: " + mezzoId + " in data " + dataStatoVeicolo);
-//                    }
-//                    break;
-//
-//                case 6:
-//                    System.out.println("Inserisci una data per visualizzare i biglietti emessi: ");
-//                    LocalDate data = LocalDate.parse(sc.nextLine());
-//                    List<Biglietto> biglietti = rd.ticketsForDate(data);
-//
-//                    if (biglietti.isEmpty()) {
-//                        System.out.println("Nessun biglietto emesso in questa data.");
-//                    } else {
-//                        System.out.println("Biglietti emessi in data " + data + " :");
-//                        for (Biglietto bigliettoo : biglietti) {
-//                            System.out.println(bigliettoo);
-//                        }
-//                    }
-//                    break;
-//                case 7:
-//                    System.out.println("Inserisci l'id di un mezzo per cercare i biglietti obliterati su di esso:");
-//                    long idMezzo = Long.parseLong(sc.nextLine());
-//                    md.totaleBigliettiObliteratiSuUnMezzo(md.findVehicleById(idMezzo));
-//                    break;
-//
-//                case 8:
-//                    System.out.println("Inserisci il numero di abbonamento di utente per verificarne la validità:");
-//                    long cardNumber = Long.parseLong(sc.nextLine());
-//                    sd1.checkSubscription(cardNumber);
-//                    break;
-//
-//                case 9:
-//                    System.out.println("Inserisci la data per creare il biglietto:");
-//                    LocalDate emissione = LocalDate.parse(sc.nextLine());
-//                    System.out.println("Inserisci il nome dell'utente:");
-//                    String nome = sc.nextLine();
-//                    System.out.println("Inserisci il cognome:");
-//                    String cognome = sc.nextLine();
-//                    Utente utente1=new Utente(nome,cognome,emissione);
-//                    ud.save(utente1);
-//                    Biglietto bigliettoNuovo = new Biglietto(emissione,utente1,rd.findSellerById(1));
-//                    rd.creaTicket(bigliettoNuovo);
-//                    break;
-//
-//                case 10:
-//                    System.out.println("Inserisci l'id del rivenditore:");
-//                    long rivenditoreId = Long.parseLong(sc.nextLine());
-//                    System.out.println("Questo Rivenditore ha venduto " + rd.serviziForRivenditore(rivenditoreId).size() + " biglietto/i");
-//                    break;
-//
-//                default:
-//                    System.out.println("Scelta non valida. Riprova.");
-//                    break;
-//            }
-//
-//        } while (true);
+//        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(1), rd.findSellerById(2), TipoAbbonamento.SETTIMANALE));
+//        sd1.saveSubscription(new Abbonamento(LocalDate.parse("2024-03-04"), ud.findUserById(3), rd.findSellerById(4), TipoAbbonamento.SETTIMANALE));
+//        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(2), rd.findSellerById(3), TipoAbbonamento.MENSILE));
+
+//        sd1.checkSubscription(4);
+
+//        System.out.println(rd.ticketsForDate(LocalDate.now()));
+
+//        md.calcolaTempoPercorrenzaMedio(2);
+
+        //RICERCA DEI SERVIZI ASSOCIATI AL NUMERO DI TESSERA
+//        ud.trovaServiziPerNumeroTessera(2);
+
+        // RICERCA UTENTE PER NUMERO TESSERA
+//        ud.trovaUtentePerNumeroTessera(3);
+
+//        sd2.saveMaintenance(new Manutenzione(LocalDate.parse("2024-03-23"), md.findVehicleById(56)));
+
+//        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(1), rd.findSellerById(2), TipoAbbonamento.SETTIMANALE));
+//        sd1.saveSubscription(new Abbonamento(LocalDate.parse("2024-03-04"), ud.findUserById(3), rd.findSellerById(4), TipoAbbonamento.SETTIMANALE));
+//        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(2), rd.findSellerById(3), TipoAbbonamento.MENSILE));
+
+//        sd1.checkSubscription(4);
+
+//        System.out.println(rd.ticketsForDate(LocalDate.now()));
+
+//        md.calcolaTempoPercorrenzaMedio(2);
+
+        //RINNOVA LA TESSERA
+//        ud.rinnovaTessera(3);
     }
 
     public static void fillDb(EntityManager em) {
@@ -615,6 +439,4 @@ public class Application {
         td.save(new Tratta("Colosseo", "Piazza del Popolo", 20));
         td.save(new Tratta("Piazza del Popolo", "Colosseo", 20));
     }
-
-
 }
