@@ -140,6 +140,10 @@ public class Application {
                     System.out.println();
                     System.out.println("Benvenuto " + me.getNome() + " " + me.getCognome() + " Tessera n. " + me.getNumeroTessera());
                     System.out.println();
+                    if (me.getDataScadenza() != null && me.getDataScadenza().isBefore(LocalDate.now().plusDays(1))) {
+                        System.out.println("ATTENZIONE! La tua tessera è --SCADUTA-- dal " + me.getDataScadenza() + ".");
+                        System.out.println();
+                    }
                     System.out.println("Seleziona un'opzione:");
                     if (me.getTipo() == TipoUtente.ADMIN) {
                         admin: while(true) {
@@ -328,7 +332,69 @@ public class Application {
                             }
                         }
                     } else {
-
+                        user: while(true) {
+                            System.out.println("1) Per comprare un biglietto;");
+                            System.out.println("2) Per vidimare un biglietto; ");
+                            System.out.println("0) Per uscire dal programma; ");
+                            int scelta = Integer.parseInt(sc.nextLine());
+                            switch (scelta) {
+                                case 0 -> {
+                                    System.out.println("Uscita dal programma...");
+                                    System.out.println("Arrivederci e grazie!");
+                                    sc.close();
+                                    break loop;
+                                }
+                                case 1 -> {
+                                    case1: while(true) {
+                                        try {
+                                            System.out.println("Inserisci l'ID del rivenditore:");
+                                            long sellerId = Long.parseLong(sc.nextLine());
+                                            Biglietto bigliettoNuovo = new Biglietto(LocalDate.now(), me, rd.findSellerById(sellerId));
+                                            rd.creaTicket(bigliettoNuovo);
+                                            System.out.println();
+                                            break case1;
+                                        } catch (NumberFormatException e) {
+                                            System.err.println("Inserisci un numero valido.");
+                                            System.out.println();
+                                        } catch (NotFoundException e) {
+                                            System.err.println(e.getMessage());
+                                            System.out.println();
+                                            break case1;
+                                        }
+                                    }
+                                }
+                                case 2 -> {
+                                    case2: while(true) {
+                                        try {
+                                            System.out.println();
+                                            System.out.println("I tuoi biglietti:");
+                                            List<Biglietto> validTickets = me.getServizi().stream().filter(ticket -> ticket instanceof Biglietto)
+                                                    .map(item -> (Biglietto) item).filter(Biglietto::isValido).toList();
+                                            if (validTickets.isEmpty()) System.out.println("- Nessun biglietto disponibile da timbrare.");
+                                            else validTickets.forEach(ticket -> System.out.println("- " + ticket));
+                                            System.out.println();
+                                            System.out.println("Inserisci l'id del ticket da obliterare:");
+                                            ticketId = Long.parseLong(sc.nextLine());
+                                            Biglietto found = sd1.findTicketById(ticketId);
+                                            System.out.println("Biglietto trovato: " + found.toString());
+                                            System.out.println("Inserisci l'id del veicolo da assegnare al ticket: ");
+                                            mezzoPerTicketId = Long.parseLong(sc.nextLine());
+                                            Mezzo mezzo = em.find(Mezzo.class, mezzoPerTicketId);
+                                            md.validateTicket(found, mezzo, LocalDate.now());
+                                            System.out.println();
+                                            break case2;
+                                        } catch (NumberFormatException e) {
+                                            System.err.println("Inserisci un numero valido.");
+                                            System.out.println();
+                                        } catch (NotFoundException e) {
+                                            System.err.println(e.getMessage());
+                                            System.out.println();
+                                            break case2;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 } catch (NumberFormatException e) {
                     System.err.println("Inserisci un numero valido.");
@@ -365,9 +431,6 @@ public class Application {
 //
 //
 //
-//            System.out.println("4) Per vidimare i biglietti ed assegnarli al mezzo; ");
-//            System.out.println("9) Per creare un biglietto;");
-//            System.out.println("0) Per uscire dal programma; ");
 //
 //
 //            scelta = sc.nextInt();

@@ -68,8 +68,8 @@ public class MezzoDAO {
     }
 
     public void validateTicket(Biglietto tk, Mezzo m, LocalDate l) {
-        if (tk.isValido() == false) {
-            System.out.println("biglietto già obliterato");
+        if (!tk.isValido()) {
+            System.out.println("Il biglietto è stato già obliterato nel mezzo " + tk.getMezzo().getId() + ".");
         } else {
             EntityTransaction tr = em.getTransaction();
             tr.begin();
