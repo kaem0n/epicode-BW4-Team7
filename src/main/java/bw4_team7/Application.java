@@ -128,11 +128,10 @@ public class Application {
 //        md.calcolaTempoPercorrenzaMedio(2);
 
         //RINNOVA LA TESSERA
-        ud.rinnovaTessera(3);
+//        ud.rinnovaTessera(3);
 
 
 
-        int scelta = 0;
         long mezzoId, trattaId, ticketId, mezzoPerTicketId;
         int minuti;
         Scanner sc = new Scanner(System.in);
@@ -148,7 +147,7 @@ public class Application {
                     System.out.println();
                     System.out.println("Benvenuto " + me.getNome() + " " + me.getCognome() + " Tessera n. " + me.getNumeroTessera());
                     System.out.println();
-                    if (me.getDataScadenza() != null && me.getDataScadenza().isBefore(LocalDate.now().plusDays(1))) {
+                    if (me.getDataScadenza() != null && ud.tesseraScaduta(me.getNumeroTessera())) {
                         System.out.println("ATTENZIONE! La tua tessera è --SCADUTA-- dal " + me.getDataScadenza() + ".");
                         System.out.println();
                     }
@@ -342,7 +341,8 @@ public class Application {
                     } else {
                         user: while(true) {
                             System.out.println("1) Per comprare un biglietto;");
-                            System.out.println("2) Per vidimare un biglietto; ");
+                            System.out.println("2) Per vidimare un biglietto;");
+                            System.out.println("3) Per rinnovare la tua tessera;");
                             System.out.println("0) Per uscire dal programma; ");
                             int scelta = Integer.parseInt(sc.nextLine());
                             switch (scelta) {
@@ -400,6 +400,11 @@ public class Application {
                                             break case2;
                                         }
                                     }
+                                }
+                                case 3 -> {
+                                    ud.rinnovaTessera(me.getNumeroTessera());
+                                    System.out.println("Nuova data di scadenza: " + me.getDataScadenza());
+                                    System.out.println();
                                 }
                             }
                         }
