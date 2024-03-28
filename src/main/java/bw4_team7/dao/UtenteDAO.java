@@ -55,7 +55,6 @@ public class UtenteDAO {
         } else {
             System.out.println("Utente non trovato");
         }
-
     }
 
     public List<Utente> utentiScaduti(){
@@ -66,7 +65,6 @@ public class UtenteDAO {
     public boolean tesseraScaduta(long numeroTessera){
         Utente utente = trovaUtentePerNumeroTessera(numeroTessera);
         return utente.getDataScadenza().isBefore(LocalDate.now());
-
     }
 
     public void rinnovaTessera(long numeroTessera){
@@ -77,9 +75,9 @@ public class UtenteDAO {
             utente.setDataEmissione(LocalDate.now());
             utente.setDataScadenza(LocalDate.now().plusYears(1));
             et.commit();
-            System.out.println("La tua tessera è stata rinnovata");
-        }else {
-            System.out.println("La tua tessera non è ancora scaduta");
+            System.out.println("La tua tessera è stata rinnovata.");
+        } else {
+            System.out.println("La tua tessera non è ancora scaduta.");
         }
     }
 

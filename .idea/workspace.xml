@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d477c4f5-836f-4ef6-a501-fd5b589d73e7" name="Changes" comment="created and tested subscription check method">
+    <list default="true" id="d477c4f5-836f-4ef6-a501-fd5b589d73e7" name="Changes" comment="finished user scanner">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/MezzoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/MezzoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Mezzo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Mezzo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/UtenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/UtenteDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -59,7 +59,8 @@
   "keyToString": {
     "Application.Application.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "git-widget-placeholder": "Alessandro__Start",
+    "git-widget-placeholder": "percorso__relation",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
@@ -79,7 +80,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d477c4f5-836f-4ef6-a501-fd5b589d73e7" name="Changes" comment="created and tested subscription check method" />
+      <changelist id="d477c4f5-836f-4ef6-a501-fd5b589d73e7" name="Changes" comment="fixed scanner switch cases 0 to 4 (5 to 8 missing)" />
       <created>1711362942583</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -109,7 +110,63 @@
       <option name="project" value="LOCAL" />
       <updated>1711378234528</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="created percorso class and its dao with methods + adapted statodao methods">
+      <option name="closed" value="true" />
+      <created>1711537668386</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1711537668386</updated>
+    </task>
+    <task id="LOCAL-00005" summary="little fix in percorsoDAO.save()">
+      <option name="closed" value="true" />
+      <created>1711537749471</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1711537749471</updated>
+    </task>
+    <task id="LOCAL-00006" summary="refactored saveMaintenance() method">
+      <option name="closed" value="true" />
+      <created>1711538178813</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1711538178813</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fixed part of the scanner inputs with new methods">
+      <option name="closed" value="true" />
+      <created>1711538959904</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1711538959904</updated>
+    </task>
+    <task id="LOCAL-00008" summary="created db filler method">
+      <option name="closed" value="true" />
+      <created>1711553954507</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1711553954507</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fixed scanner switch cases 0 to 4 (5 to 8 missing)">
+      <option name="closed" value="true" />
+      <created>1711559377716</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1711559377716</updated>
+    </task>
+    <task id="LOCAL-00010" summary="finished admin scanner">
+      <option name="closed" value="true" />
+      <created>1711618119010</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1711618119010</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -117,6 +174,14 @@
     <MESSAGE value="fixed exception message" />
     <MESSAGE value="populated DAOs" />
     <MESSAGE value="created and tested subscription check method" />
-    <option name="LAST_COMMIT_MESSAGE" value="created and tested subscription check method" />
+    <MESSAGE value="created percorso class and its dao with methods + adapted statodao methods" />
+    <MESSAGE value="little fix in percorsoDAO.save()" />
+    <MESSAGE value="refactored saveMaintenance() method" />
+    <MESSAGE value="fixed part of the scanner inputs with new methods" />
+    <MESSAGE value="created db filler method" />
+    <MESSAGE value="fixed scanner switch cases 0 to 4 (5 to 8 missing)" />
+    <MESSAGE value="finished admin scanner" />
+    <MESSAGE value="finished user scanner" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished user scanner" />
   </component>
 </project>

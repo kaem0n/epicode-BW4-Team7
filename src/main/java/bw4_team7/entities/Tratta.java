@@ -15,18 +15,18 @@ public class Tratta {
     private String nome;
     private String partenza;
     private String capolinea;
-    @Column(name = "tempo_percorrenza")
-    private int tempoPercorrenza;
-    @ManyToMany(mappedBy = "tratte")
-    private List<Mezzo> mezzi;
+    @Column(name = "media_percorrenza")
+    private int mediaPercorrenza;
+    @OneToMany(mappedBy = "tratta")
+    private List<Percorso> percorsi;
 
     public Tratta() {}
 
-    public Tratta(String partenza, String capolinea, int tempoPercorrenza) {
+    public Tratta(String partenza, String capolinea, int mediaPercorrenza) {
         this.partenza = partenza;
         this.capolinea = capolinea;
         this.nome = this.partenza + " - " + this.capolinea;
-        this.tempoPercorrenza = tempoPercorrenza;
+        this.mediaPercorrenza = mediaPercorrenza;
     }
 
     public long getId() {
@@ -45,12 +45,12 @@ public class Tratta {
         return capolinea;
     }
 
-    public int getTempoPercorrenza() {
-        return tempoPercorrenza;
+    public int getMediaPercorrenza() {
+        return mediaPercorrenza;
     }
 
-    public List<Mezzo> getMezzi() {
-        return mezzi;
+    public List<Percorso> getPercorsi() {
+        return percorsi;
     }
 
     @Override
@@ -60,7 +60,7 @@ public class Tratta {
                 ", nome='" + nome + '\'' +
                 ", partenza='" + partenza + '\'' +
                 ", capolinea='" + capolinea + '\'' +
-                ", tempoPercorrenza=" + tempoPercorrenza +
+                ", mediaPercorrenza=" + mediaPercorrenza +
                 '}';
     }
 }

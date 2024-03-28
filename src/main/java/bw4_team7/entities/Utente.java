@@ -1,5 +1,6 @@
 package bw4_team7.entities;
 
+import bw4_team7.enums.TipoUtente;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -19,6 +20,8 @@ public class Utente {
     private LocalDate dataEmissione;
     @Column(name = "data_scadenza")
     private LocalDate dataScadenza;
+    @Enumerated(EnumType.STRING)
+    private TipoUtente tipo;
     @OneToMany(mappedBy = "utente")
     private List<Servizio> servizi;
 
@@ -28,7 +31,16 @@ public class Utente {
         this.nome = nome;
         this.cognome = cognome;
         this.dataEmissione = dataEmissione;
+        this.tipo = TipoUtente.USER;
         this.dataScadenza = dataEmissione.plusYears(1);
+    }
+
+    public Utente(String nome, String cognome, LocalDate dataEmissione, TipoUtente tipo) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.dataEmissione = dataEmissione;
+        this.tipo = tipo;
+        this.dataScadenza = tipo == TipoUtente.ADMIN ? null : dataEmissione.plusYears(1);
     }
 
     public long getNumeroTessera() {
@@ -57,6 +69,10 @@ public class Utente {
 
     public LocalDate getDataScadenza() {
         return dataScadenza;
+    }
+
+    public TipoUtente getTipo() {
+        return tipo;
     }
 
     public List<Servizio> getServizi() {

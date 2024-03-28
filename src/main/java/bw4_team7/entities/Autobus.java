@@ -8,6 +8,7 @@ public class Autobus extends Mezzo {
     public Autobus() {
         super.capienza = 100;
         super.stato = StatoMezzo.IN_SERVIZIO;
+        super.percorsiPerServizio = 0;
     }
 
     @Override
@@ -16,6 +17,7 @@ public class Autobus extends Mezzo {
                 "id=" + id +
                 ", stato=" + stato +
                 ", capienza=" + capienza +
+                ", percorsiPerServizio=" + percorsiPerServizio +
                 '}';
     }
 }
