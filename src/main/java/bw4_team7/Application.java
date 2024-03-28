@@ -31,7 +31,7 @@ public class Application {
         UtenteDAO ud = new UtenteDAO(em);
         PercorsoDAO pd = new PercorsoDAO(em);
 
-//        fillDb(em);
+       //fillDb(em);
 
         long mezzoId, trattaId, ticketId, mezzoPerTicketId;
         int minuti;
