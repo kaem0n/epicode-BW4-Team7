@@ -174,8 +174,10 @@ public class Application {
                                             break case1;
                                         } catch (NumberFormatException e) {
                                             System.err.println("Inserisci un ID valido.");
+                                            System.out.println();
                                         } catch (NotFoundException e) {
                                             System.err.println(e.getMessage());
+                                            System.out.println();
                                             break case1;
                                         }
                                     }
@@ -192,11 +194,14 @@ public class Application {
                                             break case2;
                                         } catch (NumberFormatException e) {
                                             System.err.println("Inserisci un ID valido.");
+                                            System.out.println();
                                         } catch (NotFoundException e) {
                                             System.err.println(e.getMessage());
+                                            System.out.println();
                                             break case2;
                                         } catch (NullPointerException e) {
                                             System.err.println("Nessun risultato trovato.");
+                                            System.out.println();
                                             break case2;
                                         }
                                     }
@@ -217,8 +222,10 @@ public class Application {
                                             break case3;
                                         } catch (NumberFormatException e) {
                                             System.err.println("Inserisci un ID valido.");
+                                            System.out.println();
                                         } catch (NotFoundException e) {
                                             System.err.println(e.getMessage());
+                                            System.out.println();
                                             break case3;
                                         }
                                     }
@@ -237,39 +244,85 @@ public class Application {
                                             break case4;
                                         } catch (DateTimeParseException e) {
                                             System.err.println("Formato della data non valido. Assicurati di inserire la data nel formato (YYYY-MM-DD).");
+                                            System.out.println();
                                         } catch (NotFoundException e) {
                                             System.err.println(e.getMessage());
+                                            System.out.println();
+                                            break case4;
                                         }
                                     }
                                 }
                                 case 5 -> {
-                                    System.out.println("Inserisci una data per visualizzare i biglietti emessi: ");
-                                    LocalDate data = LocalDate.parse(sc.nextLine());
-                                    List<Biglietto> biglietti = rd.ticketsForDate(data);
+                                    case5: while(true) {
+                                        try {
+                                            System.out.println("Inserisci una data per visualizzare i biglietti emessi: ");
+                                            LocalDate data = LocalDate.parse(sc.nextLine());
+                                            List<Biglietto> biglietti = rd.ticketsForDate(data);
+                                            if (biglietti.isEmpty()) {
+                                                System.out.println("Non ci sono biglietti emessi in questa data.");
+                                            } else {
+                                                System.out.println("Biglietti emessi il " + data + ":");
+                                                biglietti.forEach(ticket -> System.out.println("- " + ticket));
+                                            }
+                                            System.out.println();
+                                            break case5;
+                                        } catch (DateTimeParseException e) {
+                                            System.err.println("Formato della data non valido. Assicurati di inserire la data nel formato (YYYY-MM-DD).");
+                                            System.out.println();
+                                        }
+                                    }
 
-                                    if (biglietti.isEmpty()) {
-                                        System.out.println("Non ci sono biglietti emessi in questa data.");
-                                    } else {
-                                        System.out.println("Biglietti emessi il " + data + ":");
-                                        for (Biglietto bigliettoo : biglietti) {
-                                            System.out.println(bigliettoo);
+                                }
+                                case 6 -> {
+                                    case6: while(true) {
+                                        try {
+                                            System.out.println("Inserisci l'id di un mezzo per cercare i biglietti obliterati su di esso:");
+                                            long idMezzo = Long.parseLong(sc.nextLine());
+                                            md.totaleBigliettiObliteratiSuUnMezzo(md.findVehicleById(idMezzo));
+                                            System.out.println();
+                                            break case6;
+                                        } catch (NumberFormatException e) {
+                                            System.err.println("Inserisci un numero valido.");
+                                            System.out.println();
+                                        } catch (NotFoundException e) {
+                                            System.err.println(e.getMessage());
+                                            System.out.println();
+                                            break case6;
                                         }
                                     }
                                 }
-                                case 6 -> {
-                                    System.out.println("Inserisci l'id di un mezzo per cercare i biglietti obliterati su di esso:");
-                                    long idMezzo = Long.parseLong(sc.nextLine());
-                                    md.totaleBigliettiObliteratiSuUnMezzo(md.findVehicleById(idMezzo));
-                                }
                                 case 7 -> {
-                                    System.out.println("Inserisci il numero di abbonamento di utente per verificarne la validità:");
-                                    long cardNumber = Long.parseLong(sc.nextLine());
-                                    sd1.checkSubscription(cardNumber);
+                                    case7: while(true) {
+                                        try {
+                                            System.out.println("Inserisci il numero di abbonamento di utente per verificarne la validità:");
+                                            long cardNumber = Long.parseLong(sc.nextLine());
+                                            sd1.checkSubscription(cardNumber);
+                                            System.out.println();
+                                            break case7;
+                                        } catch (NumberFormatException e) {
+                                            System.err.println("Inserisci un numero valido.");
+                                            System.out.println();
+                                        }
+                                    }
+
                                 }
                                 case 8 -> {
-                                    System.out.println("Inserisci l'id del rivenditore:");
-                                    long rivenditoreId = Long.parseLong(sc.nextLine());
-                                    System.out.println("Questo Rivenditore ha venduto " + rd.serviziForRivenditore(rivenditoreId).size() + " biglietto/i");
+                                    case8: while(true) {
+                                        try {
+                                            System.out.println("Inserisci l'id del rivenditore:");
+                                            long rivenditoreId = Long.parseLong(sc.nextLine());
+                                            RivenditoreAutorizzato found = rd.findSellerById(rivenditoreId);
+                                            System.out.println("Questo Rivenditore ha venduto " + rd.serviziForRivenditore(found.getId()).size() + " biglietto/i");
+                                            break case8;
+                                        } catch (NumberFormatException e) {
+                                            System.err.println("Inserisci un numero valido.");
+                                            System.out.println();
+                                        } catch (NotFoundException e) {
+                                            System.err.println(e.getMessage());
+                                            System.out.println();
+                                            break case8;
+                                        }
+                                    }
                                 }
                                 default -> System.err.println("Scelta non valida. Riprova.");
                             }

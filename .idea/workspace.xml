@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d477c4f5-836f-4ef6-a501-fd5b589d73e7" name="Changes" comment="created db filler method">
-      <change afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/enums/TipoUtente.java" afterDir="false" />
+    <list default="true" id="d477c4f5-836f-4ef6-a501-fd5b589d73e7" name="Changes" comment="fixed scanner switch cases 0 to 4 (5 to 8 missing)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/MezzoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/dao/MezzoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Autobus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Autobus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Mezzo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Mezzo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Tram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Tram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Biglietto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Biglietto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/entities/Utente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +59,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Application.executor": "Run",
-    "git-widget-placeholder": "percorso__relation"
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "git-widget-placeholder": "percorso__relation",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -72,10 +71,17 @@
       <recent name="C:\Users\anton\Desktop\EPICODE\Back End\Unità 1\Week 4\untitled\src\main" />
     </key>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-temurin-17.0.10-3183f394aec4-87f3d08d" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="23ba02eb-9ed5-4300-adc4-04416445beca" name="Changes" comment="" />
+      <changelist id="d477c4f5-836f-4ef6-a501-fd5b589d73e7" name="Changes" comment="fixed scanner switch cases 0 to 4 (5 to 8 missing)" />
       <created>1711362942583</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -145,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711553954507</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fixed scanner switch cases 0 to 4 (5 to 8 missing)">
+      <option name="closed" value="true" />
+      <created>1711559377716</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1711559377716</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -158,6 +172,7 @@
     <MESSAGE value="refactored saveMaintenance() method" />
     <MESSAGE value="fixed part of the scanner inputs with new methods" />
     <MESSAGE value="created db filler method" />
-    <option name="LAST_COMMIT_MESSAGE" value="created db filler method" />
+    <MESSAGE value="fixed scanner switch cases 0 to 4 (5 to 8 missing)" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed scanner switch cases 0 to 4 (5 to 8 missing)" />
   </component>
 </project>

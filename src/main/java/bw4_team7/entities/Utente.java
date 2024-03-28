@@ -31,16 +31,16 @@ public class Utente {
         this.nome = nome;
         this.cognome = cognome;
         this.dataEmissione = dataEmissione;
-        this.dataScadenza = dataEmissione.plusYears(1);
         this.tipo = TipoUtente.USER;
+        this.dataScadenza = dataEmissione.plusYears(1);
     }
 
     public Utente(String nome, String cognome, LocalDate dataEmissione, TipoUtente tipo) {
         this.nome = nome;
         this.cognome = cognome;
         this.dataEmissione = dataEmissione;
-        this.dataScadenza = dataEmissione.plusYears(1);
         this.tipo = tipo;
+        this.dataScadenza = tipo == TipoUtente.ADMIN ? null : dataEmissione.plusYears(1);
     }
 
     public long getNumeroTessera() {
