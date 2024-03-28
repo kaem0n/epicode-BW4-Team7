@@ -4,6 +4,7 @@ import bw4_team7.dao.*;
 import bw4_team7.entities.*;
 import bw4_team7.enums.StatoDistributore;
 import bw4_team7.enums.StatoMezzo;
+import bw4_team7.enums.TipoAbbonamento;
 import bw4_team7.enums.TipoUtente;
 import bw4_team7.exceptions.NotFoundException;
 import com.github.javafaker.Faker;
@@ -34,7 +35,6 @@ public class Application {
 //        fillDb(em);
 
         long mezzoId, trattaId, ticketId, mezzoPerTicketId;
-        int minuti;
         Scanner sc = new Scanner(System.in);
 
             System.out.println();
@@ -409,6 +409,7 @@ public class Application {
 
         //RINNOVA LA TESSERA
 //        ud.rinnovaTessera(3);
+
     }
 
     public static void fillDb(EntityManager em) {
@@ -438,5 +439,14 @@ public class Application {
         td.save(new Tratta("Aeroporto di Fiumicino", "Roma Tiburtina", 100));
         td.save(new Tratta("Colosseo", "Piazza del Popolo", 20));
         td.save(new Tratta("Piazza del Popolo", "Colosseo", 20));
+        for (int i = 0; i < 100; i++) {
+            pd.save(new Percorso(LocalDate.of(new Random().nextInt(2017, 2024), new Random().nextInt(1, 13), new Random().nextInt(1, 29)),
+                    md.findVehicleById(new Random().nextInt(1, 21)), td.findRouteById(new Random().nextInt(1, 11))));
+        }
+        sd1.saveSubscription(new Abbonamento(LocalDate.of(new Random().nextInt(2021, 2024), new Random().nextInt(1, 13), new Random().nextInt(1, 29)),
+                ud.findUserById(new Random().nextInt(2, 12)), rd.findSellerById(new Random().nextInt(1, 21)), TipoAbbonamento.MENSILE));
+        sd1.saveSubscription(new Abbonamento(LocalDate.of(new Random().nextInt(2021, 2024), new Random().nextInt(1, 13), new Random().nextInt(1, 29)),
+                ud.findUserById(new Random().nextInt(2, 12)), rd.findSellerById(new Random().nextInt(1, 21)), TipoAbbonamento.MENSILE));
+        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(new Random().nextInt(2, 12)), rd.findSellerById(new Random().nextInt(1, 21)), TipoAbbonamento.MENSILE));
     }
 }
