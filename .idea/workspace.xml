@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d477c4f5-836f-4ef6-a501-fd5b589d73e7" name="Changes" comment="polished fillDb() method">
+    <list default="true" id="d477c4f5-836f-4ef6-a501-fd5b589d73e7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bw4_team7/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bw4_team7/Application.java" afterDir="false" />
     </list>
@@ -58,7 +58,7 @@
   "keyToString": {
     "Application.Application.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Rachele",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true"
   }
@@ -209,6 +209,6 @@
     <MESSAGE value="pulizia" />
     <MESSAGE value="merge fix" />
     <MESSAGE value="polished fillDb() method" />
-    <option name="LAST_COMMIT_MESSAGE" value="polished fillDb() method" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>

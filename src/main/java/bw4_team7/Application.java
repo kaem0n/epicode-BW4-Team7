@@ -33,9 +33,9 @@ public class Application {
         PercorsoDAO pd = new PercorsoDAO(em);
 
 //        PER FILLARE IL DB, CHIAMARE fillDb() E generaPercorsi() SEPARATAMENTE
-//        fillDb(em);
+  //     fillDb(em);
 //        generaPercorsi(em);
-       //fillDb(em);
+
 
         long mezzoId, trattaId, ticketId, mezzoPerTicketId;
         int minuti;
