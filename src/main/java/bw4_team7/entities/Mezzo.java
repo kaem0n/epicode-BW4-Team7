@@ -7,6 +7,7 @@ import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@NamedQuery(name = "ogniMezzo", query = "SELECT m FROM Mezzo m")
 public abstract class Mezzo {
     @Id
     @GeneratedValue

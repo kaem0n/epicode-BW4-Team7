@@ -112,4 +112,9 @@ public class MezzoDAO {
         }
         return stato.toString();
     }
+
+    public List<Mezzo> ogniMezzo(){
+        TypedQuery <Mezzo> q = em.createNamedQuery("ogniMezzo", Mezzo.class);
+        return q.getResultList();
+    }
 }

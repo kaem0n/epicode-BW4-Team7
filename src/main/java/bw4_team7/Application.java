@@ -4,6 +4,7 @@ import bw4_team7.dao.*;
 import bw4_team7.entities.*;
 import bw4_team7.enums.StatoDistributore;
 import bw4_team7.enums.StatoMezzo;
+import bw4_team7.enums.TipoAbbonamento;
 import bw4_team7.enums.TipoUtente;
 import bw4_team7.exceptions.NotFoundException;
 import com.github.javafaker.Faker;
@@ -31,6 +32,9 @@ public class Application {
         UtenteDAO ud = new UtenteDAO(em);
         PercorsoDAO pd = new PercorsoDAO(em);
 
+//        PER FILLARE IL DB, CHIAMARE fillDb() E generaPercorsi() SEPARATAMENTE
+//        fillDb(em);
+//        generaPercorsi(em);
        //fillDb(em);
 
         long mezzoId, trattaId, ticketId, mezzoPerTicketId;
@@ -409,16 +413,15 @@ public class Application {
 
         //RINNOVA LA TESSERA
 //        ud.rinnovaTessera(3);
+
     }
 
     public static void fillDb(EntityManager em) {
         MezzoDAO md = new MezzoDAO(em);
         RivenditoreDAO rd = new RivenditoreDAO(em);
         ServizioDAO sd1 = new ServizioDAO(em);
-        StatoDAO sd2 = new StatoDAO(em);
         TrattaDAO td = new TrattaDAO(em);
         UtenteDAO ud = new UtenteDAO(em);
-        PercorsoDAO pd = new PercorsoDAO(em);
 
         ud.save(new Utente(faker.name().firstName(), faker.name().lastName(), LocalDate.of(new Random().nextInt(2020, 2024), new Random().nextInt(1, 13), new Random().nextInt(1, 29)), TipoUtente.ADMIN));
         for (int i = 0; i < 10; i++) {
@@ -438,5 +441,25 @@ public class Application {
         td.save(new Tratta("Aeroporto di Fiumicino", "Roma Tiburtina", 100));
         td.save(new Tratta("Colosseo", "Piazza del Popolo", 20));
         td.save(new Tratta("Piazza del Popolo", "Colosseo", 20));
+        sd1.saveSubscription(new Abbonamento(LocalDate.of(new Random().nextInt(2021, 2024), new Random().nextInt(1, 13), new Random().nextInt(1, 29)),
+                ud.findUserById(new Random().nextInt(2, 12)), rd.findSellerById(new Random().nextInt(1, 21)), TipoAbbonamento.MENSILE));
+        sd1.saveSubscription(new Abbonamento(LocalDate.of(new Random().nextInt(2021, 2024), new Random().nextInt(1, 13), new Random().nextInt(1, 29)),
+                ud.findUserById(new Random().nextInt(2, 12)), rd.findSellerById(new Random().nextInt(1, 21)), TipoAbbonamento.SETTIMANALE));
+        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(new Random().nextInt(2, 12)), rd.findSellerById(new Random().nextInt(1, 21)), TipoAbbonamento.MENSILE));
+        sd1.saveSubscription(new Abbonamento(LocalDate.now(), ud.findUserById(new Random().nextInt(2, 12)), rd.findSellerById(new Random().nextInt(1, 21)), TipoAbbonamento.SETTIMANALE));
+        for (int i = 0; i < 50; i++) {
+            sd1.saveTicket(new Biglietto(LocalDate.of(new Random().nextInt(2021, 2024), new Random().nextInt(1, 13), new Random().nextInt(1, 29)),
+                    ud.findUserById(new Random().nextInt(2, 12)), rd.findSellerById(new Random().nextInt(1, 21))));
+        }
+    }
+
+    public static void generaPercorsi(EntityManager em) {
+        PercorsoDAO pd = new PercorsoDAO(em);
+        MezzoDAO md = new MezzoDAO(em);
+        TrattaDAO td = new TrattaDAO(em);
+        for (int i = 0; i < 700; i++) {
+            pd.save(new Percorso(LocalDate.of(new Random().nextInt(2017, 2024), new Random().nextInt(1, 13), new Random().nextInt(1, 29)),
+                    md.findVehicleById(new Random().nextInt(1, 21)), td.findRouteById(new Random().nextInt(1, 11))));
+        }
     }
 }
